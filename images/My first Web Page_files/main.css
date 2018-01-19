@@ -1,0 +1,287 @@
+
+html, body {
+    font-family: Verdana,sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
+
+	
+button{font:inherit;margin:0;
+	   overflow:visible;
+	  text-transform:none}
+h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin:10px 0}
+
+
+.pantry{
+	color: white;
+	text-align: center;
+	background: #2874f0;
+	border: 1px solid black;
+}
+
+.container{
+	margin-top: 20px;
+	padding:0.01em 16px;
+	display: flex;
+	flex-wrap: wrap;
+	background-color: #f1f3f6;
+}
+.h3{
+	align:center;
+}
+.w-green{color:#fff!important;background-color:#4CAF50!important}
+
+
+.menu{
+	text-align: center;	
+	font-size: 25px;
+	font-weight: 500;
+	font-family: Times New Roman;
+}
+
+#items{
+	width: 65%;
+	border-right:1px dotted black;
+	float: left;
+	margin-right: 7px;
+}
+
+.item{
+	width: 220px;
+	float:left;
+	background-color: white;
+	margin-top: 7px;
+	margin-right: 2px;
+}
+
+button{
+    overflow: visible;
+    text-transform: none;
+	font: inherit;
+    margin: 0;
+}
+.w-button{
+	user-select: none;
+	border: none;
+    display: inline-block;
+    outline: 0;
+    padding: 3px 7px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    color: #fff!important;
+    background-color: #4CAF50!important;
+}
+.w-ul{
+	list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+}
+.w-ul{list-style-type:none;padding:0;margin:0}.w-ul li{padding:8px 16px;border-bottom:1px solid #ddd}.w-ul li:last-child{border-bottom:none}
+
+
+.w-card-4, .w-hover-shadow:hover {
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+}
+.img{
+	width: 100%;
+	height: 150px;
+	cursor: pointer;	
+}	
+
+.buttondiv {
+	padding-left: 39px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	
+}
+.buttonxy{
+	padding-bottom: 5px;
+	padding: auto;
+}
+.cartitems{
+	width:33%;
+	float: right;
+	margin-left: 10px;
+
+}
+.orderlist{
+	font-weight: 500;
+	text-align: center;
+	font-size: 25px;
+	font-family: Times New Roman;
+	margin-bottom: 15px;
+
+}
+.addbutton{
+	color: green;
+}
+.itemname{
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-family: Roboto, Arial, sans-serif;
+}
+.orderlistitem{
+	text-align: center;
+	padding-bottom: 5px;
+	font-size: 15px;	
+	margin-bottom: 5px;		
+
+}
+.w-bar{
+	   width:100%;
+	   overflow:hidden;
+       display:inline-block;
+       width:auto;
+}
+.w-bar-item{
+			padding:8px 16px;
+			float:left;
+			width:auto;
+			border:none;
+			outline:none;
+			display:block;
+			white-space:normal;
+			text-align:center;
+}
+.w-circle{border-radius:50%;}
+
+.w-block{display:block;width:100%}
+
+
+.cartbox{
+	background-color: white;
+	padding-bottom: 10px;
+}
+.cartremove{
+	display: inline-block;
+	cursor: pointer;
+	text-align: center;
+	margin-left: 20px;
+	font-size: 16px;
+	margin-top: 15px;
+	margin-right: 40px; 
+	float: right;
+
+}
+
+
+.placeorder{
+	margin-left: 40%;
+	margin-top: 40px;
+}
+.placeorderbutton{
+	text-transform:uppercase;
+	background: #2cd2b1!important;
+	padding:5px 10px;
+	color: white;
+	cursor: pointer;
+	margin-top:10	px;	
+}
+.boxitem{
+    display: inline-block;
+    padding: 0px 10px;
+    width: 46px;
+    height: 28px;
+    padding-top: 1px;
+    border-radius: 1px;
+    background-color: #fff;
+    border: 1px solid #c2c2c2;
+    margin: 0 9px;
+}
+.boxtext{
+	border: none;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    vertical-align: middle;
+    text-align: center;
+}
+.pentitle{
+	margin-top: 40px;
+	font-weight: 500;
+	text-align: center;
+	font-size: 25px;
+	background-color: white;
+	margin-bottom: 15px;
+
+}
+#pending{
+	background-color:#f1f3f6;
+	border-top: 1px solid black;
+	width: 100%;
+}
+.penlist
+{
+	background-color: white;
+}
+.penlistitem
+{
+	margin-bottom: 10px;
+	border: 1px solid #eee;
+
+}
+.penpersonimg
+{
+	display: inline-block;
+	margin-left: 5%;
+	background-color: white;
+	width: 15%;
+}
+.penperson
+{
+	display: inline-block;
+	width: 20%;
+	height: 100%;
+	background-color: white;
+}
+.penorder
+{
+	display: inline-block;
+	width: 20%;
+	background-color: white;
+}
+.penstatus
+{
+	display: inline-block;
+	text-align: center;
+	margin-right: 10px;
+	width: 7%;
+
+}
+.penextra
+{
+	width: 25%;
+	display: inline-block;
+	margin-left: 30px;
+
+}
+.penupdate{
+	display: inline-block;
+}
+.penupdatebutton{
+	text-transform:uppercase;
+	padding:5px 10px;
+	cursor: pointer;
+}
+.pencancelbutton{
+	text-transform:uppercase;
+	padding:5px 10px;
+	cursor: pointer;
+}
+
+.pencancel
+{
+display: inline-block;
+
+}
+
