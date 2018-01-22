@@ -5,10 +5,12 @@ html, body {
     line-height: 1.5;
 }
 
-html{box-sizing:border-box}
+html{
+	box-sizing:border-box;
+}
 *,*:before,*:after{box-sizing:inherit}
-
-button{font:inherit;
+button{
+	   font:inherit;
 	   margin:0;
 	   overflow:visible;
 	   text-transform:none
@@ -19,22 +21,35 @@ select{
    width: 100px;
 }
 li{padding:8px 6px;border-bottom:1px solid #ddd}
+h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin:0px 0}
 
-h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin:10px 0}
-
-
+.pantry{
+	position: fixed;
+	width: 100%;
+	top:0;
+	z-index: 10;
+}
+.pantrytitle{
+	width: 100%;
+	color: white;
+	text-align: center;
+	background: #2874f0;
+	border: 1px solid black;
+}
 .headerbox{
 	width: 100%;
 	border-bottom: 1px solid black;	
 	margin-right: 10px;	
 	height: 27px;
+	background-color: #f1f3f6;
 	overflow: auto;
 }
 .header{
-	width: 20%;
+	width: 15%;
 	text-align: center;
 	display: flex;
 	z-index: 1;
+	margin-right: 10px;
 	float: right;	
 }
 .categories{
@@ -43,14 +58,19 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	width: 50%;
 	flex-wrap: wrap; 
 }
-.item1{
+.orderoption{
 	font-size: 13px;
 	color: black;
 	width: 200px;
 	height: 20px;
 	display: flex;
 }
-.item2{
+.orderoption > a{
+	text-align: center;
+	vertical-align: middle;
+	color: black
+}
+.categoryitem{
 	font-size: 13px;
 	color: black;
 	width: 90px;
@@ -58,25 +78,11 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	display: flex;
 
 }
-.item2 > a{
+.categoryitem > a{
 	margin:auto;
 	text-align: center;
 	vertical-align: middle;
 	color: black
-}
-
-.item1  a{
-
-	text-align: center;
-	vertical-align: middle;
-	color: black
-}
-
-.pantry{
-	color: white;
-	text-align: center;
-	background: #2874f0;
-	border: 1px solid black;
 }
 
 .container{
@@ -84,7 +90,17 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	display: flex;
 	flex-wrap: wrap;
 	background-color: #f1f3f6;
-
+	top: 75px;
+	position: absolute;	
+}
+.container2{
+	padding:0.41em 16px;
+	display: flex;
+	flex-wrap: wrap;
+	background-color: #f1f3f6;
+	top: 45px;
+	width: 100%;
+	position: absolute;	
 }
 .h3{
 	align:center;
@@ -103,8 +119,6 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	margin-top: 5px;
 
 }
-
-
 #items{
 	width: 65%;
 	border-right:1px dotted black;
@@ -112,7 +126,6 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	margin-right: 7px;
 
 }
-
 .item{
 	width: 220px;
 	float:left;
@@ -120,9 +133,7 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	margin-top: 7px;
 	margin-right: 2px;
 }
-
-
-.w-button{
+.addtocart-button{
 	user-select: none;
 	border: none;
     display: inline-block;
@@ -168,6 +179,8 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	padding-bottom: 5px;
 	padding: auto;
 }
+
+
 .cartitems{
 	width:33%;
 	float: right;
@@ -256,7 +269,7 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	cursor: pointer;
 	margin-top:10	px;	
 }
-.boxitem{
+.boxitemqty{
     display: inline-block;
     padding: 0px 10px;
     width: 46px;
@@ -294,6 +307,11 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	background-color:#f1f3f6;
 	width: 100%;
 }
+
+#completed{
+	width: 100%;
+}
+
 .penlist
 {
 	background-color: white;
@@ -376,7 +394,7 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	text-transform:uppercase;
 	padding:5px 10px;
 	cursor: pointer;
-	   background-color: #ff5a5a;
+	background-color: #ff5a5a;
 	color: white;
 }
 
@@ -390,7 +408,6 @@ display: inline-block;
 	padding:5px 10px;
 	cursor: pointer;
 	color: white;
-	background-color: #DC143C;
-	margin-left: 40px;
+	background-color: #DC143C;margin-left: 40px;
 }
 
