@@ -3,7 +3,7 @@
 <head>	
 	<title>My first Web Page</title>
 	<link href="css/main.css" rel="stylesheet" type="text/css">
-</heads>
+</head>
 <body>
 	<div class="pantry">
 		<h1 class="pantrytitle">
@@ -11,7 +11,7 @@
 		</h1>			
 		<div class="headerbox">
 			<div class="categories">
-	    		<div class="categoryitem">
+	    		<div class="categoryitem highlight">
 	      			<a href="#" style="text-decoration: none;">All</a>
 	    		</div>
 	    		<div class="categoryitem">
@@ -20,14 +20,8 @@
 	    		<div class="categoryitem">
 	      			<a href="#" style="text-decoration: none;">Snacks</a>
 				</div>
-				<div class="categoryitem">
-	      			<a href="#" style="text-decoration: none;">Juice</a>
-				</div>
-				<div class="categoryitem">
-	      			<a href="#" style="text-decoration: none;">Others</a>
-				</div>
 			</div>	
-		    <div class="header">
+		    <div class="orders">
 	    		<div class="orderoption">
 	      			<a href="#pending" style="text-decoration: none;">Pending Orders</a>
 	    		</div>
@@ -36,101 +30,73 @@
 	    	    </div>
 		    </div>
 		</div>
-	
 	</div>
 	<div class="container">
     	<div class="bodynext">
 	    	<div id="items" class="gallary">
 					<ul class="w-ul w-card-4">
-  		  				<li class="item" >
+  		  				<li class="item beverages" data-id="item-1">
 			  				<div class="imgdiv">
 			  					<img class="img" src="images/Cup-of-tea.jpg" alt="Tea image">
 			  				</div>
-			  				<div class="itemname">
-				  				Tea			
-			  				</div>
+			  				<div class="itemname">Tea</div>
 			  				<div class="buttondiv">
 			  					<button class="addtocart-button w-green ">Add to cart</button>
 			  				</div>
 			  		 	</li>
-					 	<li class="item">
+					 	<li class="item beverages">
 			  				<div class="imgdiv">
 			  					<img class="img" src="images/Coffee.jpeg" alt="Coffee image">
 			  				</div>
-			  				<div class="itemname">
-				  				Coffee			
-			  				</div>	
+			  				<div class="itemname">Coffee</div>	
 			  				<div class="buttondiv">
 			  					<button class="addtocart-button w-green">Add to cart</button>
 			  				</div>
 			  			</li>	
-			  			<li class="item">
+			  			<li class="item beverages">
 			  				<div class="imgdiv">
-			  					<img class="img" src="images/Cup-of-tea.jpg" alt="Milk image">
+			  					<img class="img" src="images/milk.jpg" alt="Milk image">
 			  				</div>
-			  				<div class="itemname">
-				  				Milk			
-			  				</div>	
+			  				<div class="itemname">Milk</div>	
 			  				<div class="buttondiv">
 			  					<button class="addtocart-button w-green">Add to cart</button>
 			  				</div>
 			  			</li>
-					 	<li class="item">
+					 	<li class="item snacks">
 			  				<div class="imgdiv">
-			  					<img class="img" src="images/Coffee.jpeg" alt="Coffee image">
+			  					<img class="img" src="images/bourbon.jpg" alt="Bourbon image">
 			  				</div>
-			  				<div class="itemname">
-				  				Good Day Biscuit			
-			  				</div>	
+			  				<div class="itemname">Bourbon Biscuit</div>	
 			  				<div class="buttondiv">
 			  					<button class="addtocart-button w-green">Add to cart</button>
 			  				</div>
 			  					
 					 	</li>
-					 	<li class="item">
+					 	<li class="item snacks">
 			  				<div class="imgdiv">
-			  					<img class="img" src="images/Coffee.jpeg" alt="Coffee image">
+			  					<img class="img" src="images/jimjam.jpeg" alt="Jim jam image">
 			  				</div>
-			  				<div class="itemname">
-				  				Jim Jam Biscuit			
-			  				</div>
+			  				<div class="itemname">Jim Jam Biscuit</div>
 							<div class="buttondiv">
 			  					<button class="addtocart-button w-green">Add to cart</button>
 			  				</div>
 			  			</li>
-						<li class="item">
+						<li class="item snacks">
 			  				<div class="imgdiv">
-			  					<img class="img" src="images/Coffee.jpeg" alt="Coffee image">
+			  					<img class="img" src="images/darkfantasy.jpg" alt="Dark Fantasy image">
 			  				</div>
-			  				<div class="itemname">
-				  				Dark Fantasy			
-			  				</div>	
+			  				<div class="itemname">Dark Fantasy</div>	
 			  				<div class="buttondiv">
 			  					<button class="addtocart-button w-green">Add to cart</button>
 							</div>
 			  			</li>
+
 					</ul>
 			</div>
 			<div id="cart" class="cartitems">
 			 	<div class="orderlist"> Your Order </div>
-					<ul class="w-ul cartcart">
-				  	    <li class="w-bar cartbox">
-					      	<img src="images/Cup-of-tea.jpg" class="w-bar-item w-circle" style="width:130px">
-					     	<div class="w-bar-item">
-					        	<div class="orderlistitem">
-					        		<span> Tea </span>
-					    		</div>
-					       		<button class="plus">+</button>
-					  			<div class="boxitemqty">
-					  				<input type="text" value="1" class="boxtext">
-					  			</div>
-					  			<button class="minus">-</button>
-					  	    	</div>
-					  	    	<div class="cartremove">
-					  	    		<span>Remove</span>		
-					  	    	</div>
-					  	</li>
-					  	</ul>	
+					<ul id="cartlist" class="w-ul cartcart">
+				  	 </ul>	
 				   	<div class="placeorder">
 				   		<button class="placeorderbutton"> Place Order</button>
 				   	</div>
@@ -140,58 +106,9 @@
 			<div class="pentitle">
 			Pending Orders
 			</div>
-			<ol class="penlist">
-				<li class="penlistitem">
-					<div class="penpersonimg">
-					 	<img src="images/person.png" style="width: 100px;">
-					</div>
-					<div class="penperson">
-						Ronak Vaghela<br>
-						Table No : 1 <br>
-						Time: 10:10	
-					</div>
-					<div class="penorder">
-					 	<div class="penorderitems">
-			  			Tea : 2 <br>
-			  			Coffee: 1	
-					 	</div>
-					</div>
-					<div class="penstatus">
-					   Status<br>
-					   Pending 	
-					</div>
-					<div class="penextra">
-					  	 <div class="pencancel">	
-					  	 	<button class="pencancelbutton">Cancel Order</button>
-					  	</div>
-					 </div>
-				</li>
-				<li class="penlistitem">
-					<div class="penpersonimg">
-					 	<img src="images/person.png" style="width: 100px;">
-					</div>
-					<div class="penperson">
-						Ronak Vaghela<br>
-						Table No : 1 <br>
-						Time: 10:10	
-					</div>
-					<div class="penorder">
-					 	<div class="penorderitems">
-			  			Tea : 2 <br>
-			  			Coffee: 1	
-					 	</div>
-					</div>
-					<div class="penstatus">
-					   Status<br>
-					   Pending 	
-					</div>
-					<div class="penextra">
-					  	 <div class="pencancel">	
-					  	 	<button class="pencancelbutton">Cancel Order</button>
-					  	</div>
-					 </div>
-				</li>
-		 	</ol>
+			<ul class="penlist">
+				
+			</ul>
 		</div>
 	<div id="completed" class="pendingorder">
 		<div class="pentitle">
@@ -228,7 +145,6 @@
 		</ol>
 	</div>
 </div>
-
+	<script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html>

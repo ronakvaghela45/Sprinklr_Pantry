@@ -1,0 +1,82 @@
+<li class="penlistitem">
+					<div class="penpersonimg">
+					 	<img src="images/person.png" style="width: 100px;">
+					</div>
+					<div class="penperson">
+						Ronak Vaghela<br>
+						Table No : 1 <br>
+						Time: 10:10	
+					</div>
+					<div class="penorder">
+					 	<div class="penorderitems">
+			  			Tea : 2 <br>
+			  			Coffee: 1	
+					 	</div>
+					</div>
+					<div class="penstatus">
+					   Status<br>
+					   Pending 	
+					</div>
+					<div class="penextra">
+					  	 <div class="pencancel">	
+					  	 	<button class="pencancelbutton">Cancel Order</button>
+					  	</div>
+					 </div>
+				</li>
+
+
+
+  <li class="w-bar cartbox">
+					      	<img src="images/Cup-of-tea.jpg" class="w-bar-item w-circle" style="width:130px">
+					     	<div class="w-bar-item">
+					        	<div class="orderlistitem">
+					        		<span class="itemname"> Tea </span>
+					    		</div>
+					       		<button class="plus">+</button>
+					  			<div class="boxitemqty">
+					  				<input type="text" value="1" class="boxtext">
+					  			</div>
+					  			<button class="minus">-</button>
+					  	    	</div>
+					  	    	<div class="cartremove">
+					  	    		<span>Remove</span>		
+					  	    	</div>
+					  	</li>
+				
+				
+.highlight{
+	background:#CCC;
+}
+
+.nobg{
+	
+	background:none;
+}					
+
+	<li class="a-penlistitem">
+				 	<div class="a-penpersonimg">
+				 		<img src="images/person.png" style="width: 100px;">
+					</div>
+				 	<div class="a-penperson">
+						 Ronak Vaghela<br>
+						 Table No : 1 <br>	
+						 Time: 10:10	
+					</div>
+					<div class="a-penorder">
+				 		<div class="penorderitems">
+				  			Tea : 2 <br>
+				  			Coffee: 1	
+						</div>
+					</div>
+					<div class="a-penstatus">
+						<div class="statustext">
+							Status 
+						</div>
+						<select>
+				 		 	<option value="Pending">Pending</option>
+				  			<option value="Ready">Ready</option>
+				  			<option value="Delivered">Delivered</option>
+			  			</select>
+					 </div>
+			 	</li>
+	
