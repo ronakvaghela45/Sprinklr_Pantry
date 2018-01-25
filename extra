@@ -79,4 +79,120 @@
 			  			</select>
 					 </div>
 			 	</li>
-	
+
+<li class="item beverages" data-id="item-1">
+			  				<div class="imgdiv">
+			  					<img class="img" src="images/Cup-of-tea.jpg" alt="Tea image">
+			  				</div>
+			  				<div class="itemname">Tea</div>
+			  				<div class="buttondiv">
+			  					<button class="addtocart-button w-green ">Add to cart</button>
+			  				</div>
+			  		 	</li>
+					 	<li class="item beverages">
+			  				<div class="imgdiv">
+			  					<img class="img" src="images/Coffee.jpeg" alt="Coffee image">
+			  				</div>
+			  				<div class="itemname">Coffee</div>	
+			  				<div class="buttondiv">
+			  					<button class="addtocart-button w-green">Add to cart</button>
+			  				</div>
+			  			</li>	
+			  			<li class="item beverages">
+			  				<div class="imgdiv">
+			  					<img class="img" src="images/milk.jpg" alt="Milk image">
+			  				</div>
+			  				<div class="itemname">Milk</div>	
+			  				<div class="buttondiv">
+			  					<button class="addtocart-button w-green">Add to cart</button>
+			  				</div>
+			  			</li>
+					 	<li class="item snacks">
+			  				<div class="imgdiv">
+			  					<img class="img" src="images/bourbon.jpg" alt="Bourbon image">
+			  				</div>
+			  				<div class="itemname">Bourbon Biscuit</div>	
+			  				<div class="buttondiv">
+			  					<button class="addtocart-button w-green">Add to cart</button>
+			  				</div>
+			  					
+					 	</li>
+					 	<li class="item snacks">
+			  				<div class="imgdiv">
+			  					<img class="img" src="images/jimjam.jpeg" alt="Jim jam image">
+			  				</div>
+			  				<div class="itemname">Jim Jam Biscuit</div>
+							<div class="buttondiv">
+			  					<button class="addtocart-button w-green">Add to cart</button>
+			  				</div>
+			  			</li>
+						<li class="item snacks">
+			  				<div class="imgdiv">
+			  					<img class="img" src="images/darkfantasy.jpg" alt="Dark Fantasy image">
+			  				</div>
+			  				<div class="itemname">Dark Fantasy</div>	
+			  				<div class="buttondiv">
+			  					<button class="addtocart-button w-green">Add to cart</button>
+							</div>
+			  			</li>
+
+
+
+			  				<div class="categoryitem highlight">
+	      			<a href="#" style="text-decoration: none;">All</a>
+	    		</div>
+	    		<div class="categoryitem">
+	      			<a href="#" style="text-decoration: none;">Beverages</a>
+	    		</div>	
+	    		<div class="categoryitem">
+	      			<a href="#" style="text-decoration: none;">Snacks</a>
+				</div>
+		
+
+		
+function displayBeverages(event){
+    let currentelement = event.currentTarget;
+  	for (let index in categories)
+  	{
+  		categories[index].className=("categoryitem nobg");
+  	}
+  	let allitem = document.getElementsByClassName("item");
+    for(let i=0;i<allitem.length;i++){
+        allitem[i].style.display = "none";
+    }
+    let items = document.getElementsByClassName("beverages");
+    for(let i=0;i<items.length;i++){
+   	    items[i].style.display = "block";
+     }
+     categories[1].className="categoryitem highlight";
+}
+function displayAll(event){
+  	let allitem = document.getElementsByClassName("item");
+   	for(let i=0;i<categories.length;i++)
+  	{
+  		categories[i].className=("categoryitem nobg");
+  	}
+  	
+    for(let i=0;i<allitem.length;i++){
+        allitem[i].style.display = "block";
+    }
+   categories[0].className=" categoryitem highlight";
+}
+function displaySnacks(event){
+    let currentelement = event.currentTarget;
+  
+  	 for(let i=0;i<categories.length;i++)
+  	{
+  		categories[i].className=("categoryitem nobg");
+  	}
+  	let allitem = document.getElementsByClassName("item");
+    for(let i=0;i<allitem.length;i++){
+        allitem[i].style.display = "none";
+    }
+    let biscuit = document.getElementsByClassName("snacks");
+    for(let i=0;i<biscuit.length;i++){
+   	    biscuit[i].style.display = "block";
+     }
+
+   categories[2].className=" categoryitem highlight";
+}

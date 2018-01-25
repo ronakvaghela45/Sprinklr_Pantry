@@ -3,29 +3,109 @@
 
 //items -> item -> id, name, qty, image, category (id)
 
+
+const categoryA=["All","Beverages","Snacks"];
+const items=[
+    item1 = {
+    		"id": 1,
+			"name": "Tea",
+			"image": "Cup-of-tea.jpg",	
+			"category": 1,
+			},
+  	item2 = {
+			"id": 2,
+			"name": "Coffee",
+			"image": "Coffee.jpeg",	
+			"category": 1,
+			},
+	item3={
+			"id": 3,
+			"name": "Milk",
+			"image": "milk.jpg",	
+			"category": 1,
+			},
+	item4={
+			"id": 4,
+			"name": "Bourbon Biscuit",
+			"image": "bourbon.jpg",	
+			"category": 2,
+			},
+	item5={
+			"id": 5,
+			"name": "Jim Jam Biscuit",
+			"image": "jimjam.jpeg",	
+			"category": 2,
+			},
+	item6={
+			"id": 6,
+			"name": "Dark Fantasy",
+			"image": "darkfantasy.jpg",	
+			"category": 2,
+			}
+];
+
+
 //order -> ghgh
 
 let cartItems = [];
 let categories=document.getElementsByClassName("categoryitem");
+//const catergoryA:{ "ALL" , "Beverages", "Snacks"};
+
 const cart=document.getElementById("cart");
 const menu=document.getElementById("items");
 const cancel=document.getElementsByClassName("pencancel");
-let addToCartButtons = document.getElementsByClassName("addtocart-button");
-let orderId=0;
-//const catergoryA:{ "ALL" , "Beverages", "Snacks"};
+const addToCartButtons = document.getElementsByClassName("addtocart-button");
 const plus=document.getElementsByClassName("plus");
 const minus=document.getElementsByClassName("minus");
 const cartRemove=document.getElementsByClassName("cartremove");
+const cartLocation = document.getElementsByClassName("cartcart");
+const pendingList = document.getElementsByClassName("penlist");
+const itemList=document.getElementsByClassName("itemmenu")[0];
+ 		
 
-localStorage.clear();
 
-for(let i in addToCartButtons){
-	addToCartButtons[i].onclick=addToCart;
+addItemsFromLocal();
+addCategoriesFromLocal();
+
+function addCategoriesFromLocal(){
+	let categoryBox=document.getElementsByClassName("categories")[0];
+	categoryA.forEach((currCategory,index)=>{
+		let newCategory = document.createElement('div');
+		newCategory.setAttribute("class","categoryitem");
+		newCategory.setAttribute("id","c"+index);
+		if(currCategory==="All")
+		{
+			newCategory.setAttribute("class","categoryitem highlight");	
+		}
+		newCategory.innerHTML=`	<a href="#" style="text-decoration: none;">${currCategory}</a>`
+		newCategory.onclick=displayCategoryItems;
+		categoryBox.appendChild(newCategory);
+		});
+}
+function addItemsFromLocal(){
+		items.forEach((currItem)=>{	
+		let newItem = document.createElement('li');
+		newItem.setAttribute("class","item");
+		let name=currItem.id;
+		console.log(name);
+		newItem.setAttribute("id",name);
+		newItem.innerHTML=`	<div class="imgdiv">
+				  					<img class="img" src="images/${currItem.image}" alt="${currItem.image} image">
+				  				</div>
+				  				<div class="itemname">${currItem.name}</div>
+				  				<div class="buttondiv">
+				  					<button class="addtocart-button w-green">Add to cart</button>
+				  				</div>
+				  		   `
+		itemList.appendChild(newItem);	
+		});
+}
+for(let index in addToCartButtons){
+	addToCartButtons[index].onclick=addToCart;
 }
 function addToCart(event) {
 	const selectedItem = event.currentTarget;
 	const parent = selectedItem.parentNode.parentNode;
-	const cartLocation = document.getElementsByClassName("cartcart");
 	const currOrderList=document.getElementById("cartlist").getElementsByClassName("cartbox");
 	let itemName;
 	let itemImage;
@@ -81,64 +161,42 @@ function addToCart(event) {
 	cartRemove[cartRemove.length-1].onclick=removeFromCart;
 }
 
-function displayBeverages(event){
-    let currentelement = event.currentTarget;
-  	for (let index in categories)
-  	{
-  		categories[index].className=("categoryitem nobg");
-  	}
-  	let allitem = document.getElementsByClassName("item");
-    for(let i=0;i<allitem.length;i++){
-        allitem[i].style.display = "none";
-    }
-    let items = document.getElementsByClassName("beverages");
-    for(let i=0;i<items.length;i++){
-   	    items[i].style.display = "block";
-     }
-     categories[1].className="categoryitem highlight";
+function displayCategoryItems(){
+ 	
+ 		let categoryBox=document.getElementsByClassName("categoryitem");
+		console.log(categoryBox);
+		for(category of categoryBox)
+		{
+			category.classList.remove("highlight");
+		}
+		let currentElement=event.currentTarget;
+		currentElement.classList.add("highlight");
+		let currCategory=parseInt(currentElement.id.substring(1));
+		let categoryId=categoryA[currCategory];
+		let allItems=document.getElementsByClassName("item");
+		
+		for(item of allItems)
+		{
+			let userId=item.getAttribute("id");
+			let currItem = items.find((itemdata)=>{
+							return userId==itemdata.id;
+							});
+			if(currCategory==0 || currItem.category===currCategory)
+			{
+				item.style.display="block";
+			}
+			else
+			{
+				item.style.display="none";
+			}
+		}
 }
-
-function displayAll(event){
-  	let allitem = document.getElementsByClassName("item");
-   	for(let i=0;i<categories.length;i++)
-  	{
-  		categories[i].className=("categoryitem nobg");
-  	}
-  	
-    for(let i=0;i<allitem.length;i++){
-        allitem[i].style.display = "block";
-    }
-   categories[0].className=" categoryitem highlight";
-}
-
-function displaySnacks(event){
-    let currentelement = event.currentTarget;
-  
-  	 for(let i=0;i<categories.length;i++)
-  	{
-  		categories[i].className=("categoryitem nobg");
-  	}
-  	let allitem = document.getElementsByClassName("item");
-    for(let i=0;i<allitem.length;i++){
-        allitem[i].style.display = "none";
-    }
-    let biscuit = document.getElementsByClassName("snacks");
-    for(let i=0;i<biscuit.length;i++){
-   	    biscuit[i].style.display = "block";
-     }
-
-   categories[2].className=" categoryitem highlight";
-}
-categories[0].onclick = displayAll;
-categories[1].onclick = displayBeverages;
-categories[2].onclick = displaySnacks;
 
 function cancelOrder(event){
 	let cancelBtn = event.currentTarget;
 	let currOrderItem=cancelBtn.parentNode.parentNode;
 	currOrderItem.parentNode.removeChild(currOrderItem);
 }
-
 function removeFromCart(event){
 	//camelcase, const
 	let delete_icon = event.currentTarget;
@@ -164,7 +222,6 @@ function increaseQty(event){
 	let parent_plusbtn=parent.getElementsByClassName("boxtext")[0];
 	parent_plusbtn.setAttribute("value",parseInt(parent_plusbtn.value)+1);
 }
-
 function decreaseQty(event){
 	let minusbtn = event.currentTarget;
 	let parent = minusbtn.parentNode;
@@ -197,7 +254,6 @@ function buildOrderDetails(){
 function placeOrder(event){
 	let orderDetails=buildOrderDetails();
 	if(orderDetails.length==0){return;}
-	const pendingList = document.getElementsByClassName("penlist");
 	let newOrderElement = document.createElement('li');
 	newOrderElement.setAttribute('class',"penlistitem");
 	newOrderElement.innerHTML = `
@@ -223,9 +279,14 @@ function placeOrder(event){
 	pendingList[0].appendChild(newOrderElement);
 	cancel[cancel.length-1].onclick=cancelOrder;
 	addOrderToLocal(orderDetails);
+	emptyCart();
 }
-function addOrderToLocal(orderDetails)
-{
+function emptyCart(){
+	cartItems = [];	
+	cartLocation[0].innerHTML="";
+}
+
+function addOrderToLocal(orderDetails){
 	let orderObject={};
 	orderObject.userDetails="Ronak Vaghela<br> Table No: 1 <br> Time: 10:10";
 	orderObject.orderDetails=orderDetails;
