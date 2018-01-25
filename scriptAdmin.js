@@ -1,15 +1,16 @@
 
 
-let adminOrderId=0;
+let adminOrderId=1;
 setInterval(updateAdminOrders, 1000)
 const adminOrderList=document.getElementsByClassName("a-penlist");
 function updateAdminOrders()
 {
 	let retrievedOrder = localStorage.getItem("Order"+adminOrderId);
  	if(retrievedOrder==null)return ;
- 	adminOrderId++;
  	let order=JSON.parse(retrievedOrder);	
  	addToList(order);
+ 	adminOrderId++;
+ 	
 }
 function addToList(order){
 
@@ -17,7 +18,10 @@ function addToList(order){
 	newOrderElement.setAttribute('class',"a-penlistitem");
 	newOrderElement.innerHTML = `
 				 	<div class="a-penperson">
-					${order.userDetails}			
+				 		Order No. <br>${adminOrderId} 
+				 	</div>
+				 	<div class="a-penperson">
+					 ${order.userDetails}			
 					</div>
 					<div class="a-penorder">
 				 		<div class="a-penorderitems">

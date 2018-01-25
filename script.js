@@ -3,8 +3,9 @@
 
 //items -> item -> id, name, qty, image, category (id)
 
+//order -> ghgh
 
-const categoryA=["All","Beverages","Snacks"];
+const categoryList=["All","Beverages","Snacks"];
 const items=[
     item1 = {
     		"id": 1,
@@ -44,32 +45,27 @@ const items=[
 			}
 ];
 
-
-//order -> ghgh
-
 let cartItems = [];
-let categories=document.getElementsByClassName("categoryitem");
-//const catergoryA:{ "ALL" , "Beverages", "Snacks"};
+
 
 const cart=document.getElementById("cart");
-const menu=document.getElementById("items");
 const cancel=document.getElementsByClassName("pencancel");
-const addToCartButtons = document.getElementsByClassName("addtocart-button");
 const plus=document.getElementsByClassName("plus");
 const minus=document.getElementsByClassName("minus");
 const cartRemove=document.getElementsByClassName("cartremove");
-const cartLocation = document.getElementsByClassName("cartcart");
+
+const cartLocation = document.getElementById("cartlist");
 const pendingList = document.getElementsByClassName("penlist");
 const itemList=document.getElementsByClassName("itemmenu")[0];
- 		
-
+//const showItemList=document.getElementsByClassName("itemName")[0]; 		
 
 addItemsFromLocal();
 addCategoriesFromLocal();
+localStorage.setItem("orderId",1);
 
 function addCategoriesFromLocal(){
 	let categoryBox=document.getElementsByClassName("categories")[0];
-	categoryA.forEach((currCategory,index)=>{
+	categoryList.forEach((currCategory,index)=>{
 		let newCategory = document.createElement('div');
 		newCategory.setAttribute("class","categoryitem");
 		newCategory.setAttribute("id","c"+index);
@@ -82,60 +78,27 @@ function addCategoriesFromLocal(){
 		categoryBox.appendChild(newCategory);
 		});
 }
+
 function addItemsFromLocal(){
 		items.forEach((currItem)=>{	
-		let newItem = document.createElement('li');
-		newItem.setAttribute("class","item");
-		let name=currItem.id;
-		console.log(name);
-		newItem.setAttribute("id",name);
-		newItem.innerHTML=`	<div class="imgdiv">
-				  					<img class="img" src="images/${currItem.image}" alt="${currItem.image} image">
-				  				</div>
-				  				<div class="itemname">${currItem.name}</div>
-				  				<div class="buttondiv">
-				  					<button class="addtocart-button w-green">Add to cart</button>
-				  				</div>
-				  		   `
-		itemList.appendChild(newItem);	
-		});
+			let newItem = document.createElement('li');
+			newItem.setAttribute("class","item");
+			let name=currItem.id;
+			newItem.setAttribute("id",name);
+			newItem.innerHTML=`	<div class="imgdiv">
+					  					<img class="img" src="images/${currItem.image}" alt="${currItem.image} image">
+					  				</div>
+					  				<div class="itemname">${currItem.name}</div>
+					  				<div class="buttondiv">
+					  					<button class="addtocart-button w-green" onclick="addToCart(${name});">Add to cart</button>
+					  				</div>
+					  		   `
+			itemList.appendChild(newItem);	
+			});
 }
-for(let index in addToCartButtons){
-	addToCartButtons[index].onclick=addToCart;
-}
-function addToCart(event) {
-	const selectedItem = event.currentTarget;
-	const parent = selectedItem.parentNode.parentNode;
-	const currOrderList=document.getElementById("cartlist").getElementsByClassName("cartbox");
-	let itemName;
-	let itemImage;
-	let imageSrc;
-	let fileName;
-	let newartElement ;
-	let alreadyPresent=false;
-	itemName=parent.getElementsByClassName("itemname")[0].innerHTML; 
-	let itemIndex=cartItems.indexOf(itemName);
-	if(itemIndex != -1)
-	{
-		for(let index in currOrderList)
-		{
-			if(currOrderList[index].getElementsByClassName("itemname")[0].innerHTML===itemName)
-			{	
-				let qty=currOrderList[index].getElementsByClassName("boxtext")[0];
-				qty.setAttribute("value",parseInt(qty.value)+1);	
-				return;
-			}
-		}
-	}
 
-	cartItems.push(itemName);
-	
-	itemImage=parent.getElementsByClassName("img")[0];
-	imageSrc = itemImage.src;
-	imageSrc=imageSrc.split("/");
-	fileName=imageSrc[imageSrc.length-1];
-	fileName="images/"+fileName;
-	
+function addnewCartElement(fileName,itemName){
+	let newCartElement ;
 	newCartElement = document.createElement('li');
 	newCartElement.setAttribute('class',"w-bar cartbox");
 	newCartElement.innerHTML = `
@@ -154,11 +117,51 @@ function addToCart(event) {
 					  	    		<span>Remove</span>		
 					  	    	</div>
 						`
-	cartLocation[0].appendChild(newCartElement);
- 
+	cartLocation.appendChild(newCartElement);
     plus[plus.length-1].onclick=increaseQty;
 	minus[minus.length-1].onclick=decreaseQty;
 	cartRemove[cartRemove.length-1].onclick=removeFromCart;
+}
+
+function ifAlreadyInCart(itemName){
+	const currOrderList=document.getElementById("cartlist").getElementsByClassName("cartbox");
+	let itemIndex=cartItems.indexOf(itemName);
+	if(itemIndex != -1)
+	{
+		for(let index in currOrderList)
+		{
+			if(currOrderList[index].getElementsByClassName("itemname")[0].innerHTML===itemName)
+			{	
+				let qty=currOrderList[index].getElementsByClassName("boxtext")[0];
+				qty.setAttribute("value",parseInt(qty.value)+1);	
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+function addToCart(currentElementId) {
+	//const selectedItem = event.currentTarget;
+	//const parent = selectedItem.parentNode.parentNode;
+	let itemName;
+	let itemImage;
+	let imageSrc;
+	let fileName;
+	let alreadyPresent=false;
+	let parent=document.getElementById(currentElementId);
+	let currentElement=parent.getElementsByClassName("itemname")[0];
+	itemName=currentElement.innerHTML; 
+	if(ifAlreadyInCart(itemName))return;
+		
+	cartItems.push(itemName);
+	
+	itemImage=parent.getElementsByClassName("img")[0];
+	imageSrc = itemImage.src;
+	imageSrc=imageSrc.split("/");
+	fileName=imageSrc[imageSrc.length-1];
+	fileName="images/"+fileName;
+	addnewCartElement(fileName,itemName);	
 }
 
 function displayCategoryItems(){
@@ -172,7 +175,7 @@ function displayCategoryItems(){
 		let currentElement=event.currentTarget;
 		currentElement.classList.add("highlight");
 		let currCategory=parseInt(currentElement.id.substring(1));
-		let categoryId=categoryA[currCategory];
+		let categoryId=categoryList[currCategory];
 		let allItems=document.getElementsByClassName("item");
 		
 		for(item of allItems)
@@ -199,21 +202,14 @@ function cancelOrder(event){
 }
 function removeFromCart(event){
 	//camelcase, const
-	let delete_icon = event.currentTarget;
-	let currItem= delete_icon.parentNode;
+	let deleteIcon = event.currentTarget;
+	let currItem= deleteIcon.parentNode;
 	let itemName=currItem.getElementsByClassName("itemname");
 	let val=itemName[0].innerHTML;
-	for(let index=0;index<cartItems.length;index++)
-	{
-		if(cartItems[index]===val)
-		{		
-			cartItems.splice(index,1);
-			break;
-		}
-	}	
+	let index=cartItems.indexOf(val);
+	cartItems.splice(index,1);
 	currItem.parentNode.removeChild(currItem);
 }
-
 //common functions and object implementation
 function increaseQty(event){
 	console.log("in");
@@ -250,19 +246,26 @@ function buildOrderDetails(){
 	}
 	return orderDetails;
 }
-
+function timeNow() {
+  let d = new Date(),
+      h = (d.getHours()<10?'0':'') + d.getHours(),
+      m = (d.getMinutes()<10?'0':'') + d.getMinutes();
+  return h + ':' + m;
+}
 function placeOrder(event){
 	let orderDetails=buildOrderDetails();
 	if(orderDetails.length==0){return;}
 	let newOrderElement = document.createElement('li');
 	newOrderElement.setAttribute('class',"penlistitem");
+	currTime=timeNow();
+
 	newOrderElement.innerHTML = `
 					<div class="penpersonimg">
 					 	<img src="images/person.png" style="width: 100px;">
 					</div>
 					<div class="penperson">
 						Table No : 1 <br>
-						Time: 10:10
+						Time: ${currTime}
 					</div>
 					<div class="penorder">
 					 	<div class="penorderitems">${orderDetails}</div>
@@ -283,7 +286,7 @@ function placeOrder(event){
 }
 function emptyCart(){
 	cartItems = [];	
-	cartLocation[0].innerHTML="";
+	cartLocation.innerHTML="";
 }
 
 function addOrderToLocal(orderDetails){
@@ -291,8 +294,9 @@ function addOrderToLocal(orderDetails){
 	orderObject.userDetails="Ronak Vaghela<br> Table No: 1 <br> Time: 10:10";
 	orderObject.orderDetails=orderDetails;
 	orderObject.status="pending";
+	let orderId=parseInt(localStorage.getItem("orderId"));
+	localStorage.setItem("orderId",orderId+1);
 	localStorage.setItem("Order"+orderId,JSON.stringify(orderObject));
-	orderId++;	
 }
 document.getElementsByClassName("placeorderbutton")[0].onclick = placeOrder;
 
