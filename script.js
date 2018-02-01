@@ -9,6 +9,9 @@
 
 const model={
 
+     userId: "User1",
+     userName:"Ronak Vaghela",
+     tableNo:"1",
      categoryList : ["All","Beverages","Snacks"],
      currCategory: "All", 
  	 cartItems : [],
@@ -59,26 +62,28 @@ const model={
 
 };  
 
-
-
-
-
-//html templates
-//insert items together
-
 const connecter={	
 	
-
 	init : function(){
-		localStorage.setItem("orderId",1);
 		this.currCartList=document.getElementById("cart-list").getElementsByClassName("cart-box");	
+		connecter.initLocalStorage();
 		itemView.init();
 		cartView.init();
 		categoryView.init();
 		pendingOrdersView.init();
 		orderHistoryView.init();
 	},
-
+	initLocalStorage:function(){
+		if(localStorage.getItem("orderId")===null)
+			localStorage.setItem("orderId",1);
+		if(localStorage.getItem("Pending")===null)
+			localStorage.setItem("Pending",JSON.stringify([]));
+		if(localStorage.getItem("Completed")===null)
+			localStorage.setItem("Completed",JSON.stringify([]));
+	},
+	getUserId(){
+		return model.userId;
+	},
 	getCategories:function(){
 		return model.categoryList;
 	},
@@ -114,10 +119,11 @@ const connecter={
 		let ifAlreadyInCart;
 		ifAlreadyInCart=connecter.ifAlreadyInCart(cartItems,item);
 		let itemName=item.name;
+		//need to be updated using data-id
 		if(ifAlreadyInCart){
 			for(let index in connecter.currCartList)
 			{
-				if(connecter.currCartList[index].getElementsByClassName('itemname')[0].innerHTML===itemName)
+				if(connecter.currCartList[index].getElementsByClassName('item-name')[0].innerHTML===itemName)
 				{	
 					connecter.changeQty(item,connecter.currCartList[index],1);
 					break;
@@ -180,7 +186,7 @@ const connecter={
 			return;
 		}
 	},
-	//order deatils contains Item name and Qty
+	//order deatils contains Item name:Qty
 	buildOrderDetails: function(){
 		const cartItems=connecter.getCartItems();
 		let orderDetails={};
@@ -190,30 +196,20 @@ const connecter={
 			let qty=cartItems[item].qty;
 			orderDetails[cartItems[item].name]=qty;
 		}
-		orderDetails.__proto__.toString=function(){
-		let details=[];
-			for(let itemName in this){
-				 if (this.hasOwnProperty(itemName))
-				 	details.push(itemName+" : "+this[itemName]);
-			}
-			return details.join("<br>");
-	    }
 		return orderDetails;
 	},
-	timeNow: function(){
+	getCurrTime: function(){
 		let d = new Date(),
 		    h = (d.getHours()<10?'0':'') + d.getHours(),
 		    m = (d.getMinutes()<10?'0':'') + d.getMinutes();
 		return h + ':' + m;
 	},
-
-	cancelOrder:function(orderElement){
-		connecter.removeOrderFromPending(orderElement);
-	},
 	
 	buildOrderObject:function(orderDetails){
 		let orderObject={};
-		orderObject.userDetails="Ronak Vaghela<br> Table No: 1 <br> Time: 10:10";
+		let userName=
+		orderObject.userDetails=model.userName+"<br> Table No:"+ model.tableNo;
+		orderObject.time=connecter.getCurrTime();
 		orderObject.orderDetails=orderDetails;
 		orderObject.status="Pending";
 		let orderId=parseInt(localStorage.getItem("orderId"));
@@ -221,16 +217,50 @@ const connecter={
 		orderObject.orderId="Order"+orderId;
 		return orderObject;
 	},
+	parseOrderDetails:function(orderDetails){
+		let details=[];
+			for(let itemName in orderDetails){
+				 if (orderDetails.hasOwnProperty(itemName))
+				 	details.push(itemName+" : "+orderDetails[itemName]);
+			}
+			return details.join("<br>");
+	},
  	
  	addOrderToLocal:function(orderObject){
+		
+		let pendingOrders=JSON.parse(localStorage.getItem("Pending"));
+		pendingOrders.push(orderObject.orderId);	
 		localStorage.setItem(orderObject.orderId,JSON.stringify(orderObject));
+		localStorage.setItem("Pending",JSON.stringify(pendingOrders));
 	},
-	deleteOrder:function(orderElement){
+
+	cancelOrder:function(orderElement,order){
+		connecter.removeOrderFromPendingList(orderElement,order);		
+		pendingOrdersView.renderPrev();
+		localStorage.removeItem(order.orderId);
+	},
+	removeOrderFromPendingList:function(orderElement,orderObject){
+		orderElement.parentNode.removeChild(orderElement);
+		let pendingOrders=JSON.parse(localStorage.getItem("Pending"));
+		let index=pendingOrders.indexOf(orderObject.orderId);
+		pendingOrders.splice(index,1);	
+		localStorage.setItem("Pending",JSON.stringify(pendingOrders));
+	},
+	
+	//removePendingOrderElement(orderElement){
+	//},
+	deleteOrderFromLocal:function(order){
+		let completedOrders=JSON.parse(localStorage.getItem("Completed"));
+		let index=completedOrders.indexOf(order.orderId);
+		completedOrders.splice(index,1);	
+		localStorage.setItem("Completed",JSON.stringify(completedOrders));
+		localStorage.removeItem(order.orderId);
+	},
+	deleteOrder:function(orderElement,order){
+		connecter.deleteOrderFromLocal(order);
 		orderElement.parentNode.removeChild(orderElement);
 	},
-	checkForStatusChange:function(){
-
-	},
+	/*
 	checkIfDelivered:function(order,orderElement){
 		if(order.status==="Delivered"){
 			setTimeout(function(){connecter.removeOrderFromPending(orderElement)},9000);
@@ -239,16 +269,18 @@ const connecter={
 			addOrderToLocal(order);
 		}
 	},
-	removeOrderFromPending(orderElement){
-		orderElement.parentNode.removeChild(orderElement);
-	},
+
+	
+	//need to be updated
 	reorder(order){
 		let newOrderDetails=order.orderDetails.copy();
 		let orderObject=connecter.buildOrderObject(orderDetails);
 		connecter.addOrderToLocal(order);
 		pendingOrdersView.render(order);
 	}
-}
+	*/
+
+};
 
 const itemView = { 
 
@@ -257,8 +289,7 @@ const itemView = {
 	      this.render();	
     },
     render: function() {
-
-        let allItems = connecter.getVisibleItems();
+		let allItems = connecter.getVisibleItems();
         this.itemList.innerHTML = '';
 		allItems.forEach((currItem)=>{	
 			let newItem = document.createElement('li');
@@ -313,6 +344,7 @@ const cartView = {
 		let qty=cartElement.getElementsByClassName("box-text")[0];
 		qty.setAttribute("value",item.qty);
 	},
+	
 	render: function(item){
 			let itemName=item.name;
 			let itemImageSrc="images/"+item.image;
@@ -350,10 +382,18 @@ const cartView = {
 const pendingOrdersView={
 
 	init:function(){
-		this.pendingList = document.getElementById("penlist");
-		pendingOrderView.renderPrev();	
+		this.pendingList = document.getElementById("pen-list");
+		this.renderPrev();	
 	},
-	
+	renderPrev:function(){
+		this.pendingList.innerHTML='';
+		let pendingOrders=JSON.parse(localStorage.getItem("Pending"));
+		for(index in pendingOrders){
+			let order=JSON.parse(localStorage.getItem(pendingOrders[index]));	
+			this.render(order);
+		}
+	},
+	/*
 	displayStatusChange:function(order){
 		let statusElement=this.getElementsByClassName("penstatus")[0];
 		order=JSON.parse(localStorage.getItem(order.orderId));
@@ -361,66 +401,78 @@ const pendingOrdersView={
 		statusElement.innerHTML=`Status : ${status}`;
 		connecter.checkIfDelivered(order,this);
 	},
+	*/
 	render:function(order){
 		
-		let orderDetails=order.orderDetails;
+		let orderDetails=connecter.parseOrderDetails(order.orderDetails);
 		if(orderDetails.length==0){return;}
 		let newOrderElement = document.createElement('li');
-		newOrderElement.setAttribute('class',"penlistitem");
-		currTime=connecter.timeNow();
+		newOrderElement.setAttribute('class',"pen-list-item");
+		let userDetails=order.userDetails;
+		let timeOfOrder=order.time;		
 		newOrderElement.innerHTML = `
-						<div class="penpersonimg">
+						<div class="pen-person-img">
 						 	<img src="images/person.png" style="width: 100px;">
 						</div>
-					<div class="penperson">
-							Table No : 1 <br>
-							Time: ${currTime}
+					<div class="pen-person">
+							${userDetails} <br>
+							Time: ${timeOfOrder}
 						</div>
-						<div class="penorder">
-						 	<div class="penorderitems">${orderDetails}</div>
+						<div class="pen-order">
+						 	<div class="pen-order-items">${orderDetails}</div>
 						</div>
-						<div class="penstatus">
+						<div class="pen-status">
 						   Status : ${order.status}
 						</div>
-						<div class="penextra">
-						  	 <div class="pencancel">	
-						  	 	<button class="pencancelbutton">Cancel Order</button>
+						<div class="pen-extra">
+						  	 <div class="pen-cancel">	
+						  	 	<button class="pen-cancel-button">Cancel Order</button>
 						  	</div>
 						 </div>
 					`
 		this.pendingList.appendChild(newOrderElement);
-		//doubt?????
-		setInterval(pendingOrdersView.displayStatusChange.bind(newOrderElement,order),10000);
-	    
-	    let cancelbutton=newOrderElement.getElementsByClassName("pencancelbutton")[0];
-		cancelbutton.addEventListener("click",connecter.cancelOrder.bind(null,newOrderElement),false);
+		
+		//	setInterval(pendingOrdersView.displayStatusChange.bind(newOrderElement,order),10000);
+	   	let cancelbutton=newOrderElement.getElementsByClassName("pen-cancel-button")[0];
+		cancelbutton.addEventListener("click",connecter.cancelOrder.bind(null,newOrderElement,order),false);
 	}
-}
+};
 
 const orderHistoryView={
 
 	init:function(){
-		this.orderHistoryList=document.getElementById("orderHistory");
+		this.orderHistoryList=document.getElementById("order-History");
+		this.renderPrev();	
+	},
+	renderPrev:function(){
+		this.orderHistoryList.innerHTML='';
+		let completedOrders=JSON.parse(localStorage.getItem("Completed"));
+		for(index in completedOrders){
+			let order=JSON.parse(localStorage.getItem(completedOrders[index]));	
+			this.render(order);
+		}
 	},
 	render:function(order){
 		let orderElement = document.createElement('li');
-		orderElement.setAttribute('class',"penlistitem");
+		orderElement.setAttribute('class',"pen-list-item");
+		let orderDetails=connecter.parseOrderDetails(order.orderDetails);
 		orderElement.innerHTML = `
-						<div class="penpersonimg">
+						<div class="pen-person-img">
 						 	<img src="images/person.png" style="width: 100px;">
 						</div>
-						<div class="penperson">
-								${order.userDetails}
+						<div class="pen-person">
+								${order.userDetails}<br>
+								Time : ${order.time}
 						</div>
-						<div class="penorder">
-						 	<div class="penorderitems">${order.orderDetails}</div>
+						<div class="pen-order">
+						 	<div class="pen-order-items">${orderDetails}</div>
 						</div>
-						<div class="penstatus">
+						<div class="pen-status">
 						   Status : ${order.status}	
 						</div>
-						<div class="penextra">
-							<div class="penupdate">
-								<button class="deleteOrderButton">Delete Order</button>
+						<div class="pen-extra">
+							<div class="pen-update">
+								<button class="delete-order-button">Delete Order</button>
 							</div>
 						</div>
 				   `
@@ -429,12 +481,11 @@ const orderHistoryView={
 		//						 	<button class="reorderButton">Reorder</button>
 		//					</div>
 								   
-		//let reorderButton=orderElement.getElementsByClassName("reorderButton")[0];
-		//reorderButton.addEventListener("click",connecter.reorder.bind(null,order),false);
+		let deleteOrderButton=orderElement.getElementsByClassName("delete-order-button")[0];
+		deleteOrderButton.addEventListener("click",connecter.deleteOrder.bind(null,orderElement,order),false);
 		this.orderHistoryList.appendChild(orderElement);
 	}
-}
-
+};
 connecter.init();
 
 

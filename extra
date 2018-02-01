@@ -196,3 +196,17 @@ function displaySnacks(event){
 
    categories[2].className=" categoryitem highlight";
 }
+
+
+retrieveOrder:function(){
+		let adminOrderId=controller.getAdminOrderId();
+		let retrievedOrder = localStorage.getItem("Pending");
+	 	if(retrievedOrder==null)return ;
+	 	let order=JSON.parse(retrievedOrder);	
+		controller.updateAdminOrders(order);
+	},
+	
+	updateAdminOrders:function(order){
+		orderView.render(order);
+		controller.updateTotalOrder(order.orderDetails);
+	}

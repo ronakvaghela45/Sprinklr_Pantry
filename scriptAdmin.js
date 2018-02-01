@@ -1,35 +1,17 @@
 
 (function(){
+
 const model={
 	totalOrders:{},
-	adminOrderId:1
-}
+};
 
 const controller={
 	init:function(){
-		setInterval(controller.retrieveOrder,3000)
-	},
-	
-	getAdminOrderId:function(){
-		return model.adminOrderId;
-	},
-	incrementAdminOrderId:function(){
-	 	model.adminOrderId++;
+		totalOrderView.init();
+		orderView.init();
 	},
 	getTotalOrders:function(){
 		return model.totalOrders;
-	},
-	retrieveOrder:function(){
-		let adminOrderId=controller.getAdminOrderId();
-		let retrievedOrder = localStorage.getItem("Order"+adminOrderId);
-	 	if(retrievedOrder==null)return ;
-	 	let order=JSON.parse(retrievedOrder);	
-		controller.updateAdminOrders(order);
-	},
-	updateAdminOrders:function(order){
-		orderView.render(order);
-		controller.incrementAdminOrderId();
-		controller.updateTotalOrder(order.orderDetails);
 	},
 	updateTotalOrder:function(orderDetails){
 		let totalOrders=controller.getTotalOrders();
@@ -44,7 +26,6 @@ const controller={
 				}
 			}
 		}
-		totalOrderView.render();
 	},
 	orderInText:function(orderDetails){
 			let details=[];
@@ -54,35 +35,80 @@ const controller={
 			}
 			return details.join("<br>");
 	},
+	removeFromPending:function(order){
+		let pendingOrders=JSON.parse(localStorage.getItem("Pending"));
+		let index=pendingOrders.indexOf(order.orderId);
+		pendingOrders.splice(index,1);	
+		localStorage.setItem("Pending",JSON.stringify(pendingOrders));
+	},
+	addInCompleted:function(order){
+		let completedOrders=JSON.parse(localStorage.getItem("Completed"));
+		completedOrders.push(order.orderId);	
+		localStorage.setItem("Completed",JSON.stringify(completedOrders));
+	},	
+	
+	updateOrderInLocal:function(order){
+		controller.removeFromPending(order);
+		controller.addInCompleted(order);
+	},
+	removeTotalOrders:function(){
+		model.totalOrders={};
+	},
+
 	updateOrderStatus:function(order){
 		order.status=this.value;
 		let orderId=order.orderId;
 		localStorage.setItem(orderId,JSON.stringify(order));
+		if(order.status=="Delivered"){
+			controller.updateOrderInLocal(order);
+			orderView.renderTotal();
+		}
 	}
 	
 }
 
-const adminOrderList=document.getElementsByClassName("a-penlist");
 
 const orderView={
+
+		init:function(){
+				this.adminOrderList=document.getElementsByClassName("a-pen-list");
+				orderView.renderTotal();
+		},
+		renderTotal: function(){
+			this.adminOrderList[0].innerHTML='';
+			let pendingOrders=JSON.parse(localStorage.getItem("Pending"));
+			controller.removeTotalOrders();
+			for(index in pendingOrders){
+				let order=JSON.parse(localStorage.getItem(pendingOrders[index]));	
+				controller.updateTotalOrder(order.orderDetails);
+				orderView.render(order);
+			}
+			let completedOrders=JSON.parse(localStorage.getItem("Completed"));
+			for(index in completedOrders){
+				let order=JSON.parse(localStorage.getItem(completedOrders[index]));	
+				orderView.render(order);
+			}
+			totalOrderView.renderTotal();
+		},
 
 		render:function(order){
 			let newOrderElement = document.createElement('li');
 			let orderDetails= controller.orderInText(order.orderDetails);
-			newOrderElement.setAttribute('class',"a-penlistitem");
+			newOrderElement.setAttribute('class',"a-pen-list-item");
 			newOrderElement.innerHTML = `
-				 	<div class="a-penperson">
+				 	<div class="a-pen-person">
 				 		 ${order.orderId} 
 				 	</div>
-				 	<div class="a-penperson">
-						  ${order.userDetails}			
+				 	<div class="a-pen-person">
+						  ${order.userDetails}<br>
+						  Time: ${order.time}			
 					</div>
-					<div class="a-penorder">
-				 		<div class="a-penorderitems">
+					<div class="a-pen-order">
+				 		<div class="a-pen-order-items">
 				  			${orderDetails}
 				  		</div>
 					</div>
-					<div class="a-penstatus">
+					<div class="a-pen-status">
 						<div class="statustext">
 							Status 
 						</div>	
@@ -95,25 +121,23 @@ const orderView={
 			 
 				`			
 			let selectOptions=newOrderElement.getElementsByClassName("statusOptions")[0];
+			selectOptions.value=order.status;
 			selectOptions.addEventListener('change',controller.updateOrderStatus.bind(selectOptions,order),false);
-			adminOrderList[0].appendChild(newOrderElement);
+			this.adminOrderList[0].appendChild(newOrderElement);
 		}
 }
-
-const totalOrderList=document.getElementById("a-penTotalOrder");
-	
 const totalOrderView={
 	init:function(){
-			
+		this.totalOrderList=document.getElementById("a-pen-Total-Order");
 	},
-	render: function() {
-    	totalOrderList.innerHTML='';
+	renderTotal: function() {
+    	this.totalOrderList.innerHTML='';
     	let totalOrders=controller.getTotalOrders();
     	for(item in totalOrders){
     		let newOrderElement = document.createElement('li');
 			newOrderElement.innerHTML = `${item} : ${totalOrders[item]}
 										`;
-    		totalOrderList.appendChild(newOrderElement);
+    		this.totalOrderList.appendChild(newOrderElement);
     	}	
     }
 }

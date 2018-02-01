@@ -304,7 +304,7 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
     vertical-align: middle;
     text-align: center;
 }
-.pentitle{
+.pen-title{
 	margin-top: 40px;
 	font-weight: 500;
 	text-align: center;
@@ -325,12 +325,12 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	width: 100%;
 }
 
-.penlist
+.pen-list
 {
 	background-color: white;
 	padding: inherit;		
 }
-.penlistitem
+.pen-list-item
 {
 	display: flex;
 	margin-bottom: 10px;
@@ -338,14 +338,14 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	border: 1px solid #eee;
 	overflow: auto;
 }
-.penpersonimg
+.pen-person-img
 {
 	display: inline-block;
 	background-color: white;
 	margin:auto;
 	min-width: 150px;
 }
-.penperson
+.pen-person
 {
 	display: inline-block;
 	white-space: normal;
@@ -355,21 +355,21 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	margin:auto;
 	min-width: 150px;
 }
-.penorder
+.pen-order
 {
 	display: inline-block;
 	background-color: white;
 	margin:auto;
 	min-width: 170px;
 }
-.penstatus
+.pen-status
 {
 	display: inline-block;
 	text-align: center;
 	margin:auto;	
 	min-width: 100px;
 }
-.a-penstatus
+.a-pen-status
 {
 	display: inline-block;
 	text-align: center;
@@ -377,11 +377,7 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	min-width:150px;
 
 }
-.astatustext{
-	margin-bottom: 5px;
-	min-width: 150px;
-}
-.penextra
+.pen-extra
 {
 	display: inline-block;
 	margin-left: 30px;
@@ -389,12 +385,12 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	min-width: 200px;
 }
 
-.penupdate{
+.pen-update{
 	display: inline-block;
 }
 
 
-.penupdatebutton, .reorderButton{
+.pen-update-button, .reorder-Button{
 	text-transform:uppercase;
 	padding:5px 10px;
 	color: white;
@@ -403,7 +399,7 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	outline: none;
 
 }
-.pencancelbutton, .deleteOrderButton{
+.pen-cancel-button, .delete-order-button{
 	text-transform:uppercase;
 	padding:5px 10px;
 	margin-left: 20px;
@@ -413,11 +409,11 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	outline: none;
 
 }
-.pencancel
+.pen-cancel
 {
   display: inline-block;
 }
-.pendeletebutton
+.pen-delete-button
 {
 	text-transform:uppercase;
 	padding:5px 10px;
@@ -445,11 +441,11 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	width: 70%;
 	border-right: 1px solid black;
 }
-.a-totalOrders{
+.a-total-Orders{
 	background-color:#f1f3f6;
 	width: 30%;
 }
-.a-pentitle{
+.a-pen-title{
 	margin-top: 40px;
 	font-weight: 500;
 	text-align: center;
@@ -457,12 +453,12 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	background-color: white;
 	margin-bottom: 15px;
 }
-.a-penlist
+.a-pen-list
 {
 	background-color: white;
 	padding: inherit;		
 }
-.a-penlistitem
+.a-pen-list-item
 {
 	display: flex;
 	margin-bottom: 10px;
@@ -470,7 +466,7 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	border: 1px solid #eee;
 	overflow: auto;
 }
-.a-penpersonimg
+.a-pen-person-img
 {
 	display: inline-block;
 	background-color: white;
@@ -478,7 +474,7 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	margin:auto;
 	min-width: 150px;
 }
-.a-penperson
+.a-pen-person
 {
 	display: inline-block;
 	width: 17%;
@@ -489,7 +485,12 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	margin:auto;
 	min-width: 150px;
 }
-.a-penorder
+.a-status-text{
+	margin-bottom: 5px;
+	min-width: 150px;
+}
+
+.a-pen-order
 {
 	display: inline-block;
 	width: 17%;
@@ -497,7 +498,7 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	margin:auto;
 	min-width: 150px;
 }
-.a-penstatus
+.a-pen-status
 {
 	display: inline-block;
 	text-align: center;
@@ -505,11 +506,11 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	width: 7%;
 	min-width: 150px;
 }
-.astatustext{
+.a-status-text{
 	margin-bottom: 5px;
 	min-width: 150px;
 }
-.a-totaltitle{
+.a-total-title{
 	margin-top: 40px;
 	font-weight: 500;
 	text-align: center;
@@ -517,7 +518,7 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	background-color: white;
 	margin-bottom: 15px;
 }
-.a-penTotalOrder {
+.a-pen-Total-Order {
 	width: 80%;
 	background-color: white;
 	margin:auto;
