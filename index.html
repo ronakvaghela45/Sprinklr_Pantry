@@ -6,14 +6,14 @@
 </head>
 <body>
 	<div class="pantry">
-		<h1 class="pantrytitle">
+		<h1 class="pantry-title">
 	  		Sprinklr Pantry 
 		</h1>			
-		<div class="headerbox">
+		<div class="header-box">
 			<div class="categories">
 	    	</div>	
 		    <div class="orders">
-	    		<div class="orderoption">
+	    		<div class="order-option">
 	      			<a href="#pending" style="text-decoration: none;">Pending Orders</a>
 	    		</div>
 	    		<div class="orderoption">
@@ -23,61 +23,33 @@
 		</div>
 	</div>
 	<div class="container">
-    	<div class="bodynext">
-	    	<div id="items" class="gallary">
-					<ul class="w-ul itemmenu">
-  		  		
+    		<div class="gallary">
+					<ul id="items" class="list item-menu">
   		  			</ul>
 			</div>
-			<div id="cart" class="cartitems">
-			 	<div class="orderlist"> Your Order </div>
-					<ul id="cartlist" class="w-ul cartcart">
+			<div id="cart" class="cart-items">
+			 	<div class="order-list"> Your Order </div>
+					<ul id="cart-list" class="list cart-list">
 				  	 </ul>	
-				   	<div class="placeorder">
-				   		<button class="placeorderbutton"> Place Order</button>
+				   	<div class="place-order">
+				   		<button class="place-order-button"> Place Order</button>
 				   	</div>
 			</div>	
-		</div>
+	
 		<div id="pending" class="pendingorder">
 			<div class="pentitle">
 			Pending Orders
 			</div>
-			<ul class="penlist">
+			<ul id="penlist" class="penlist">
+				
 			</ul>
 		</div>
 	<div id="completed" class="pendingorder">
 		<div class="pentitle">
 			Order History
 		</div>
-		<ol class="penlist">
-			<li class="penlistitem">
-				<div class="penpersonimg">
-				 	<img src="images/person.png" style="width: 100px;">
-				</div>
-				<div class="penperson">
-					Ronak Vaghela<br>
-					Table No : 1	
-				</div>
-				<div class="penorder">
-				 	<div class="penorderitems">
-		  			Tea : 2 <br>
-		  			Coffee: 1	
-				</div>
-				</div>
-				<div class="penstatus">
-				    Status<br>
-				    Completed	
-				</div>
-				<div class="penextra">
-					<div class="penupdate">
-						 	<button class="penupdatebutton">Reorder</button>
-					</div>
-					<div class="penupdate">
-						<button class="pendeletebutton">Delete Order</button>
-					</div>
-				</div>
-			</li>
-		</ol>
+		<ul id="orderHistory" class="penlist">
+		</ul>
 	</div>
 </div>
 <script src="script.js"></script>

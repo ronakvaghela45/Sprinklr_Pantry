@@ -30,7 +30,7 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	top: 0;
 	z-index: 10;
 }
-.pantrytitle {
+.pantry-title {
 	width: 100%;
 	color: white;
 	text-align: center;
@@ -45,7 +45,7 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 .nobg {
 	background:none;
 }	
-.headerbox {
+.header-box {
 	width: 100%;
 	border-bottom: 1px solid black;	
 	margin-right: 10px;	
@@ -70,19 +70,19 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	flex-wrap: wrap; 
 }
 
-.orderoption {
+.order-option {
 	font-size: 13px;
 	color: black;
 	width: 200px;
 	height: 100%;
 	display: flex;
 }
-.orderoption > a{
+.order-option > a{
 	text-align: center;
 	vertical-align: middle;
 	color: black
 }
-.categoryitem{
+.category-item{
 	font-size: 13px;
 	color: black;
 	width: 90px;
@@ -90,7 +90,7 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	display: flex;
 
 }
-.categoryitem > a{
+.category-item > a{
 	margin:auto;
 	text-align: center;
 	vertical-align: middle;
@@ -110,11 +110,6 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 }
 .w-green{color:#fff;background-color:#4CAF50}
 
-.bodynext{
-	display:flex;
-	flex-wrap: wrap; 
-	width: 100%;
-}
 .menu{
 	text-align: center;	
 	font-size: 25px;
@@ -123,7 +118,7 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	margin-top: 5px;
 
 }
-#items{
+.gallary{
 	width: 66%;
 	float: left;
 	margin-right: 7px;
@@ -146,7 +141,7 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
   box-shadow: 0 0 10px #888;
 }
 
-.addtocart-button{
+.add-To-Cart-button{
 	user-select: none;
 	border: none;
     display: inline-block;
@@ -163,20 +158,20 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
     color: #fff!important;
     background-color: #4CAF50!important;
 }
-.addtocart-button:hover{
+.add-To-cart-button:hover{
 	box-shadow: 0 0 0 1px #099E44 inset!important;
 	background: #E6F5EC!important;
 	color:#4CAF50!important;
 }
 
-.w-ul{
+.list{
 	list-style-type: none;
     padding: 0;
     margin: 0;
 }
-.w-ul{list-style-type:none;padding:0;margin:0}.w-ul 
+.list{list-style-type:none;padding:0;margin:0} 
 
-.w-ul li:last-child{border-bottom:none}
+.list li:last-child{border-bottom:none}
 
 .w-card-4, .w-hover-shadow:hover {
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
@@ -187,26 +182,25 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	cursor: pointer;	
 }	
 
-.buttondiv {
+.button-div {
 	padding-left: 53px;
 	padding-right: 10px;
 	padding-bottom: 10px;
 	
 }
-.buttonxy{
+.button-xy{
 	padding-bottom: 5px;
 	padding: auto;
 }
 
 
-.cartitems{
+.cart-items{
 	width:32%;
 	float: right;
 	margin-left: 15px;
 	min-width: 300px;
-
 }
-.orderlist{
+.order-list{
 	font-weight: 500;
 	text-align: center;
 	font-size: 25px;
@@ -215,22 +209,22 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	margin-bottom: 10px;
 	margin-top: 5px;
 }
-.cartcart
+.cart-list
 {
 	height: 400px;
 	overflow: auto;
 }
-.addbutton{
+.add-button{
 	color: green;
 }
-.itemname{
+.item-name{
 	text-align: center;
 	margin-top: 5px;
 	font-size: 15px;
 	margin-bottom: 5px;
 	font-family: Roboto, Arial, sans-serif;
 }
-.orderlistitem{
+.order-list-item{
 	text-align: center;
 	padding-bottom: 5px;
 	font-size: 15px;	
@@ -258,13 +252,13 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 .w-block{display:block;width:100%}
 
 
-.cartbox{
+.cart-box{
 	background-color: white;
 	padding-bottom: 10px;
 	min-width: 200px;
 	width: 100%;
 }
-.cartremove{
+.cart-remove{
 	display: inline-block;
 	cursor: pointer;
 	text-align: center;
@@ -275,11 +269,11 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 
 }
 
-.placeorder{
+.place-order{
 	margin-left: 40%;
 	margin-top: 40px;
 }
-.placeorderbutton{
+.place-order-button{
 	text-transform:uppercase;
 	background-color: #4CAF50!important;
 	padding:5px 10px;
@@ -289,10 +283,10 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	outline: none;
 	margin-top:10px;	
 }
-.placeorderbutton:hover{
+.place-order-button:hover{
     background-color: #018c38!important;
 }
-.boxitemqty{
+.box-item-qty{
     display: inline-block;
     width: 46px;
     height: 28px;
@@ -301,7 +295,7 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
     border: 1px solid #c2c2c2;
     margin: 0 9px;
 }
-.boxtext{
+.box-text{
 	border: none;
     width: 100%;
     height: 100%;
@@ -348,14 +342,12 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 {
 	display: inline-block;
 	background-color: white;
-	width: 10%;
 	margin:auto;
 	min-width: 150px;
 }
 .penperson
 {
 	display: inline-block;
-	width: 17%;
 	white-space: normal;
 	height: 100%;
 	background-color: white;
@@ -366,25 +358,22 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 .penorder
 {
 	display: inline-block;
-	width: 17%;
 	background-color: white;
 	margin:auto;
-	min-width: 150px;
+	min-width: 170px;
 }
 .penstatus
 {
 	display: inline-block;
 	text-align: center;
 	margin:auto;	
-	width: 7%;
-	min-width: 150px;
+	min-width: 100px;
 }
 .a-penstatus
 {
 	display: inline-block;
 	text-align: center;
 	margin:auto;	
-	width: 10%;
 	min-width:150px;
 
 }
@@ -398,12 +387,14 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	margin-left: 30px;
 	margin:auto;
 	min-width: 200px;
-
 }
+
 .penupdate{
 	display: inline-block;
 }
-.penupdatebutton{
+
+
+.penupdatebutton, .reorderButton{
 	text-transform:uppercase;
 	padding:5px 10px;
 	color: white;
@@ -412,16 +403,16 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	outline: none;
 
 }
-.pencancelbutton{
+.pencancelbutton, .deleteOrderButton{
 	text-transform:uppercase;
 	padding:5px 10px;
+	margin-left: 20px;
 	cursor: pointer;
 	background-color: #DC143C;
 	color: white;
 	outline: none;
 
 }
-
 .pencancel
 {
   display: inline-block;
@@ -527,7 +518,7 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 	margin-bottom: 15px;
 }
 .a-penTotalOrder {
-	width: 17%;
+	width: 80%;
 	background-color: white;
 	margin:auto;
 	min-width: 150px;
