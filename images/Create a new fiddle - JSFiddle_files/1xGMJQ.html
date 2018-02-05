@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://headway-widget.net/widgets/1xGMJQ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <style>
+      *{box-sizing:border-box}*,body,button,input,select,textarea{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;-moz-osx-font-smoothing:grayscale}body,html{height:100vh}html{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:13px;overflow:hidden}body,h2,h3,p{padding:0;margin:0}p{font-size:13px}h2,h3{font-weight:600;font-size:.9rem}.outercont{color:#222c36}.outercont .cont{overflow:hidden;position:relative;height:100vh;width:100vw}.outercont .innercont{-webkit-transform:translate(0);transform:translate(0);overflow:hidden;position:absolute;left:0;-webkit-transition:all .3s;transition:all .3s;will-change:left;width:200vw}.outercont .innercont .logDetails,.outercont .innercont .logListCont{width:100vw;float:left;overflow:hidden}.outercont .innercont .slideCont{padding:16px}.outercont .innercont .slideCont .slideBody .label{margin-bottom:10px}.outercont .innercont .slideCont .slideBody p{margin-bottom:10px;line-height:19px;color:#222c36;clear:both}.outercont .innercont .slideCont .slideBody p a{color:#3778ff}.outercont .innercont .slideCont .slideBody p:last-child{margin-bottom:0}.outercont .innercont .slideCont .slideBody ul{clear:both;padding:0;margin:10px 0 10px 15px;line-height:22px}.outercont .innercont .logDetailsItem{position:relative}.outercont .innercont .logItem{display:block;line-height:19px;padding:7px 16px 7px 12px;color:#666;text-decoration:none;border-left:3px solid #3778ff}.outercont .innercont .logItem.read{border-left:0;padding:7px 15px}.outercont .innercont .logItem:first-child{padding-top:14px}.outercont .innercont .logItem:last-child{padding-bottom:14px}.outercont .innercont .logItem:hover strong{text-decoration:underline}.outercont .innercont strong{color:#222c36;font-weight:600}.outercont .innercont .back{position:absolute;top:0;left:0;display:block;height:46px;width:30px;opacity:.25}.outercont .innercont .back:after,.outercont .innercont .back:before{content:"";height:12px;width:1px;display:block;background:#222c36;position:absolute;left:17px}.outercont .innercont .back:before{-webkit-transform:rotate(45deg);transform:rotate(45deg);top:14px}.outercont .innercont .back:after{-webkit-transform:rotate(-45deg);transform:rotate(-45deg);bottom:12px}.outercont .innercont h3{text-align:center;border-bottom:1px solid #f1f1f1;font-weight:600;font-size:14px;padding:15px 23px;line-height:15px}.outercont .innercont .link{margin:15px 0 5px}.outercont .innercont .link a{color:#3778ff;font-weight:bold;text-decoration:none;display:inline-block}.outercont .innercont .seeMore{background:#fcfcfc;color:#a8a8a8;font-size:12px;text-align:center;border-top:1px solid #f1f1f1;height:35px;line-height:35px;border-radius:0 0 4px 4px}.outercont .innercont .seeMore a{color:#a8a8a8}.outercont .innercont .label{border-radius:10px;color:#fff;font-size:11px;padding:0 6px;height:18px;line-height:18px;margin-right:5px;float:left}.outercont .innercont .label.category_{display:none}.outercont .innercont .label.category_1{background:#3778ff}.outercont .innercont .label.category_2{background:#b26cee}.outercont .innercont .label.category_3{background:#ff4772}.outercont .innercont .label.category_4{background:#17caf0}.outercont .innercont .label.category_5{background:#3aaa55}.outercont .innercont .label.category_6{background:#ffc505}.outercont .innercont .label.category_7{background:#7290df}.outercont .innercont .label.category_8{background:#94cd1b}.outercont .innercont .label.category_9{background:#ba68db}.outercont .innercont .label.category_10{background:#846eff}
+    </style>
+    <script>
+      (function(){var t,e=function(t,e){return function(){return t.apply(e,arguments)}},s=function(t,e){function s(){this.constructor=t}for(var o in e)n.call(e,o)&&(t[o]=e[o]);return s.prototype=e.prototype,t.prototype=new s,t.__super__=e.prototype,t},n={}.hasOwnProperty;t=function(){function t(){this.log=e(this.log,this)}return t.prototype.pushMessage=function(t,e){return null==e&&(e={}),window.parent.postMessage([t,e],"*")},t.prototype.addEvent=function(t,e,s,n){return null==n&&(n=!1),t.addEventListener(e,s,n)},t.prototype.setStyles=function(t,e){var s,n;n=[];for(s in e)n.push(t.style[s]=e[s]);return n},t.prototype.log=function(){if(this.options.debug)return console.log("[Headway Debug]",arguments)},t}(),this.App=function(t){function n(t){this.applyTranslations=e(this.applyTranslations,this),this.moveScreenTo=e(this.moveScreenTo,this),this.replaceBaseUrl=e(this.replaceBaseUrl,this),this.setDetailsHeight=e(this.setDetailsHeight,this),this.setListHeight=e(this.setListHeight,this),this.markItems=e(this.markItems,this),this.logsExpired=e(this.logsExpired,this),this.countUnseenItems=e(this.countUnseenItems,this),this.countItems=e(this.countItems,this),this.storeSeenItems=e(this.storeSeenItems,this),this.getCurrentIds=e(this.getCurrentIds,this),this.setSeenIds=e(this.setSeenIds,this),this.setReadIds=e(this.setReadIds,this),this.setupDefaults=e(this.setupDefaults,this),this.options=t,this.elements={logItems:document.querySelectorAll(".logItem"),backLinks:document.querySelectorAll(".back"),logListCont:document.querySelector(".logListCont"),logDetailsItem:document.querySelectorAll(".logDetailsItem"),innercont:document.querySelector(".innercont"),title:document.querySelector("h3"),readMore:document.querySelector(".link a"),seeMore:document.querySelector(".seeMore a")},this.storageKey,this.currentCount,this.badgeCount,this.storageIds,this.current={data:null},this.setupDefaults(),this.log("App.constructor",this.options,this.elements,this.storageKey,this.currentCount,this.badgeCount,this.storageIds,this.current)}return s(n,t),n.prototype.setupDefaults=function(){var t,e,s,n,o,r,i,a,l;for(a=this.elements.logItems,t=function(t){return function(e,s){return e.addEventListener("click",function(n){return n.stopPropagation(),n.preventDefault(),t.moveScreenTo(-100),t.setDetailsHeight(s),t.currentCount>=0&&!e.dataset.read&&t.storageIds.read.indexOf(e.dataset.id)<0&&(t.currentCount=t.currentCount-1,t.setReadIds(e.dataset.id),t.markItems("read")),t.pushMessage("setAction",{event:"onShowDetails"})})}}(this),s=e=0,o=a.length;e<o;s=++e)i=a[s],t(i,s);for(l=this.elements.backLinks,n=0,r=l.length;n<r;n++)i=l[n],i.addEventListener("click",function(t){return function(e){return e.stopPropagation(),e.preventDefault(),t.moveScreenTo(0),t.setListHeight()}}(this));if(this.setListHeight(),this.elements.logItems.length>0)return window.addEventListener("message",function(t){return function(e){var s,n;if(n=e.data[0],s=e.data[1],"opened"===n&&(t.storeSeenItems(),t.pushMessage("setBadge",{counter:0,softHide:!0,options:t.options})),"closed"===n&&(t.moveScreenTo(0),t.setListHeight()),"ready"===n)return t.options.debug=s.options.debug,t.options.baseUrl=s.options.baseUrl,t.current.data=s,t.storageKey=t.current.data.host,t.storageIds=s.storage,t.currentCount=t.countItems("read"),t.badgeCount=t.countUnseenItems(),t.markItems("read"),t.markItems("seen"),t.applyTranslations(),null!=t.elements.seeMore&&t.options.baseUrl&&(t.elements.seeMore.href=t.options.baseUrl),t.log("App.setupDefaults#ready",e.data),t.pushMessage("widgetReady",{counter:t.badgeCount,softHide:!0,options:t.options})}}(this))},n.prototype.setReadIds=function(t){var e,s;return s="HW_readItems",this.storageIds.read.push(t),e=this.storageIds.read.join(","),this.pushMessage("setStorage",{key:s,ids:e})},n.prototype.getIds=function(t){return this.storageIds[t]},n.prototype.setSeenIds=function(t){var e;return e="HW_seenItems",t=t.join(","),this.pushMessage("setStorage",{key:e,ids:t})},n.prototype.getCurrentIds=function(){var t;return t=Array.prototype.slice.call(this.elements.logItems),t.map(function(t){return t.dataset.id})},n.prototype.storeSeenItems=function(){var t,e,s,n;for(s=Array.prototype.slice.call(this.elements.logItems),this.storageIds.seen=this.storageIds.seen.slice(0,20),t=0,n=s.length;t<n;t++)e=s[t],this.storageIds.seen.indexOf(e.dataset.id)<0&&this.storageIds.seen.push(e.dataset.id);return this.setSeenIds(this.storageIds.seen)},n.prototype.countItems=function(t){var e,s,n,o,r,i,a;if(s=0,this.log("App.countItems("+t+")",this.storageIds),null!=(a=this.storageIds)?a[t]:void 0){for(o=this.storageIds[t],e=this.getCurrentIds(),n=e.map(function(t){return o.indexOf(t)>=0}),r=0,i=n.length;r<i;r++)n[r]||(s+=1);this.log("App.countItems#storageIds["+t+"]",e,n)}return s},n.prototype.countUnseenItems=function(){var t,e,s;return s=this.countItems("seen"),e=this.logsExpired(),t=s,e&&(t=0),t},n.prototype.logsExpired=function(){var t,e,s,n,o,r;return e=this.options.expireAfter||9999,n=this.elements.logItems[0],o=n.dataset.date,s=new Date(o),t=new Date,r=Math.abs(t.getTime()-s.getTime()),Math.floor(r/864e5)>=e},n.prototype.markItems=function(t){var e,s,n,o,r,i;if(n=this.getIds(t),n.length>0){for(i=[],e=0,r=n.length;e<r;e++)s=n[e],s?(o=document.querySelector("*[data-id='"+s+"']"),null!=o&&(o.dataset[t]=!0),i.push(null!=o?o.classList.add(t):void 0)):i.push(void 0);return i}},n.prototype.setListHeight=function(){return this.pushMessage("setHeight",{height:this.elements.logListCont.offsetHeight})},n.prototype.setDetailsHeight=function(t){var e,s,n,o,r,i;for(i=this.elements.logDetailsItem,n=0,r=i.length;n<r;n++)o=i[n],this.setStyles(o,{display:"none"});return s=this.elements.logDetailsItem[t].querySelector("noscript"),s&&(e=s.innerHTML,e=e.replace(/&gt;/g,">").replace(/&lt;/g,"<").replace(/&amp;/g,"&"),s.parentNode.innerHTML=e,this.applyTranslations(),this.addTargetBlank(this.elements.logDetailsItem[t]),this.replaceBaseUrl(this.elements.logDetailsItem[t])),this.setStyles(this.elements.logDetailsItem[t],{display:"block"}),this.pushMessage("setHeight",{height:this.elements.logDetailsItem[t].offsetHeight})},n.prototype.replaceBaseUrl=function(t){var e,s;if(s=t.querySelector(".link a"),this.options.baseUrl&&null!=s)return e=s.dataset.path,s.href=this.options.baseUrl+e},n.prototype.addTargetBlank=function(t){var e,s,n,o,r;for(o=t.querySelectorAll(".slideBody a"),r=[],e=0,s=o.length;e<s;e++)n=o[e],n.target="_blank",r.push(n.rel="noopener noreferrer");return r},n.prototype.moveScreenTo=function(t){return this.setStyles(this.elements.innercont,{left:t+"%"})},n.prototype.applyTranslations=function(){var t,e,s,n,o,r,i,a,l;if(this.current.data.options.translations){if(a=this.current.data.options.translations,null!=a.title&&(this.elements.title.textContent=a.title),null!=a.labels){r=a.labels;for(e in r)for(l=r[e],n=document.querySelectorAll("*[data-label-value='"+e+"']"),t=0,o=n.length;t<o;t++)s=n[t],s.textContent=l}if(null!=a.readMore)return null!=(i=this.elements.readMore)?i.textContent=a.readMore:void 0}},n}(t)}).call(this);
+    </script>
+    <script type="text/javascript">
+      var HW_config =  {"badgeDelay":3,"softHide":true,"eyecatcher":false,"expireAfter":null}
+
+      document.addEventListener("DOMContentLoaded", function(){
+        new App(HW_config);
+      }, false);
+    </script>
+
+      <style>
+        .outercont .innercont .link a {
+          color: #1C90F3;
+        }
+
+        .outercont .innercont .slideCont .slideBody p a {
+          color: #1C90F3;
+        }
+
+        .outercont .innercont .logItem {
+          border-left-color: #1C90F3;
+        }
+      </style>
+  </head>
+  <body>
+    <div class="outercont">
+      <div class="cont">
+        <div class="innercont">
+          <div class="logListCont">
+  <h3>Latest changes</h3>
+  <div class="logList">
+    <a href="https://headway-widget.net/widgets/1xGMJQ#" class="logItem" data-id="48967" data-date="2018-02-05 10:49:43 UTC">
+  <span class="label category_2" data-label-value="improvement">Improvement</span>
+  <strong>Highlighting active lines.</strong>
+  A small improvement to user experience – active lines are now highlighted.
+
+</a> <!-- /logItem -->
+<a href="https://headway-widget.net/widgets/1xGMJQ#" class="logItem seen" data-id="48954" data-date="2018-02-05 09:34:27 UTC" data-seen="true">
+  <span class="label category_1" data-label-value="new">New</span>
+  <strong>Alternative layout grids.</strong>
+  
+JSFiddle now has alternative layout grids, there's something for everyone! Enjoy!
+</a> <!-- /logItem -->
+<a href="https://headway-widget.net/widgets/1xGMJQ#" class="logItem seen" data-id="48953" data-date="2018-02-05 09:17:37 UTC" data-seen="true">
+  <span class="label category_1" data-label-value="new">New</span>
+  <strong>Live code linting.</strong>
+  Live code linting is now available for CSS, JavaScript, Babel and HTML.
+
+Linting for SCSS and...
+</a> <!-- /logItem -->
+<a href="https://headway-widget.net/widgets/1xGMJQ#" class="logItem seen" data-id="48950" data-date="2018-02-05 09:11:57 UTC" data-seen="true">
+  <span class="label category_1" data-label-value="new">New</span>
+  <strong>Embed resources from CDNJS.</strong>
+  
+In addition to adding external resources by URL, you can now start typing a library name and an...
+</a> <!-- /logItem -->
+
+  </div> <!-- /logList -->
+  <div class="seeMore">
+    <a target="_blank" rel="noopener noreferrer" href="https://changelog.jsfiddle.net/">JSFiddle changelog</a>
+      powered by <a target="_blank" href="https://headwayapp.co/?utm_medium=widget&amp;utm_source=JSFiddle" rel="noopener noreferrer">Headway</a>
+  </div>
+</div> <!-- /logListCont -->
+
+<div class="logDetails">
+  <div class="logDetailsItem">
+  <a href="https://headway-widget.net/widgets/1xGMJQ#back" class="back"></a>
+  <h3>Highlighting active lines</h3>
+  <div class="slideCont">
+    <div class="slideBody">
+      <noscript>
+        &lt;span class="label category_2" data-label-value="improvement"&gt;Improvement&lt;/span&gt;
+        &lt;p&gt;A small improvement to user experience – active lines are now highlighted.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cloud.headwayapp.co/changelogs_images/images/small/000/011/140-9ced22e6261b2644374483137646e1335dac0b48.gif" width="308" height="117"&gt;&lt;/p&gt;
+      </noscript>
+    </div>
+  </div> <!-- /slideCont -->
+</div> <!-- /logDetailsItem -->
+<div class="logDetailsItem">
+  <a href="https://headway-widget.net/widgets/1xGMJQ#back" class="back"></a>
+  <h3>Alternative layout grids</h3>
+  <div class="slideCont">
+    <div class="slideBody">
+      <noscript>
+        &lt;span class="label category_1" data-label-value="new"&gt;New&lt;/span&gt;
+        &lt;p&gt;&lt;img src="https://cloud.headwayapp.co/changelogs_images/images/small/000/011/137-515a90ed5f24d350151042547e497c04717d72e9.gif" width="308" height="178"&gt;&lt;/p&gt;
+&lt;p&gt;JSFiddle now has alternative layout grids, there's something for everyone! Enjoy!&lt;/p&gt;
+      </noscript>
+    </div>
+  </div> <!-- /slideCont -->
+</div> <!-- /logDetailsItem -->
+<div class="logDetailsItem">
+  <a href="https://headway-widget.net/widgets/1xGMJQ#back" class="back"></a>
+  <h3>Live code linting</h3>
+  <div class="slideCont">
+    <div class="slideBody">
+      <noscript>
+        &lt;span class="label category_1" data-label-value="new"&gt;New&lt;/span&gt;
+        &lt;p&gt;Live code linting is now available for &lt;strong&gt;CSS&lt;/strong&gt;, &lt;strong&gt;JavaScript&lt;/strong&gt;, &lt;strong&gt;Babel&lt;/strong&gt; and &lt;strong&gt;HTML&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cloud.headwayapp.co/changelogs_images/images/small/000/011/134-b7dc91a3bef057a756e884b23a20b7c1858b7d4c.png" width="308" height="137"&gt;&lt;/p&gt;
+&lt;p&gt;Linting for SCSS and CoffeeScript will follow soon.&lt;/p&gt;
+&lt;p&gt;If live code validation isn't your jam, it can be disabled from the Editor settings:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cloud.headwayapp.co/changelogs_images/images/small/000/011/135-800c209b1f2696df5fbbce866659044a3d864873.png" width="308" height="155"&gt;&lt;/p&gt;
+      </noscript>
+    </div>
+      <p class="link"><a target="_blank" href="https://changelog.jsfiddle.net/live-code-linting-48953" data-path="/live-code-linting-48953" rel="noopener noreferrer">Read the whole post</a></p>
+  </div> <!-- /slideCont -->
+</div> <!-- /logDetailsItem -->
+<div class="logDetailsItem">
+  <a href="https://headway-widget.net/widgets/1xGMJQ#back" class="back"></a>
+  <h3>Embed resources from CDNJS</h3>
+  <div class="slideCont">
+    <div class="slideBody">
+      <noscript>
+        &lt;span class="label category_1" data-label-value="new"&gt;New&lt;/span&gt;
+        &lt;p&gt;&lt;img src="https://cloud.headwayapp.co/changelogs_images/images/small/000/011/133-62f9cabe75269d3cee30d21d77098d15a958f98d.gif" width="308" height="199"&gt;&lt;/p&gt;
+&lt;p&gt;In addition to adding external resources by URL, you can now start typing a library name and an auto-complete will suggest libraries directly from the great CDNJS.&lt;/p&gt;
+      </noscript>
+    </div>
+      <p class="link"><a target="_blank" href="https://changelog.jsfiddle.net/embed-resources-from-cdnjs-48950" data-path="/embed-resources-from-cdnjs-48950" rel="noopener noreferrer">Read the whole post</a></p>
+  </div> <!-- /slideCont -->
+</div> <!-- /logDetailsItem -->
+
+</div> <!-- /logDetails -->
+
+        </div> <!-- /innercont -->
+      </div> <!-- /cont -->
+    </div> <!-- /outercont -->
+  
+
+</body></html>

@@ -62,18 +62,18 @@ const model={
 
 };  
 
-const connecter={	
+const controller={	
 	
 	init : function(){
 		this.currCartList=document.getElementById("cart-list").getElementsByClassName("cart-box");	
-		connecter.initLocalStorage();
+		controller.initLocalStorage();
 		itemView.init();
 		cartView.init();
 		categoryView.init();
 		pendingOrdersView.init();
 		orderHistoryView.init();
 	},
-	initLocalStorage:function(){
+	initLocalStorage : function(){
 		if(localStorage.getItem("orderId")===null)
 			localStorage.setItem("orderId",1);
 		if(localStorage.getItem("Pending")===null)
@@ -81,7 +81,7 @@ const connecter={
 		if(localStorage.getItem("Completed")===null)
 			localStorage.setItem("Completed",JSON.stringify([]));
 	},
-	getUserId(){
+	getUserId: function(){
 		return model.userId;
 	},
 	getCategories:function(){
@@ -94,20 +94,20 @@ const connecter={
 		model.currCategory=newCategory;
 	},
 	changeCategory : function(newCategory){
-		if(newCategory===connecter.getCurrCategory()) return;
-		connecter.setCurrCategory(newCategory);
+		if(newCategory===controller.getCurrCategory()) return;
+		controller.setCurrCategory(newCategory);
 		categoryView.render();
 		itemView.render();
 	},
 	getItemsOfCurrCategory: function(){
-		let currCategory=connecter.getCurrCategory();
-		let items = connecter.getAllItems();
+		let currCategory=controller.getCurrCategory();
+		let items = controller.getAllItems();
 		return items.filter(function(item) {
                 return (item.category===currCategory || currCategory==="All");
             });
 	},
 	getVisibleItems : function(){
-		let displayItems=connecter.getItemsOfCurrCategory();
+		let displayItems=controller.getItemsOfCurrCategory();
 		return displayItems;
 	},
 	getAllItems:function(){
@@ -115,17 +115,17 @@ const connecter={
 	},
 	addToCart : function(item){
 		
-		const cartItems=connecter.getCartItems();
+		const cartItems=controller.getCartItems();
 		let ifAlreadyInCart;
-		ifAlreadyInCart=connecter.ifAlreadyInCart(cartItems,item);
+		ifAlreadyInCart=controller.ifAlreadyInCart(cartItems,item);
 		let itemName=item.name;
 		//need to be updated using data-id
 		if(ifAlreadyInCart){
-			for(let index in connecter.currCartList)
+			for(let index in controller.currCartList)
 			{
-				if(connecter.currCartList[index].getElementsByClassName('item-name')[0].innerHTML===itemName)
+				if(controller.currCartList[index].getElementsByClassName('item-name')[0].innerHTML===itemName)
 				{	
-					connecter.changeQty(item,connecter.currCartList[index],1);
+					controller.changeQty(item,controller.currCartList[index],1);
 					break;
 				}
 			}
@@ -154,7 +154,7 @@ const connecter={
 		let qty=parseInt(item.qty);
 		if(change===-1 && qty===1)
 		{
-			connecter.removeFromCart(item,cartElement);
+			controller.removeFromCart(item,cartElement);
 			return;
 		}
 		item.qty=item.qty+parseInt(change);
@@ -162,7 +162,7 @@ const connecter={
 	},
 	removeFromCart:function(item,cartElement){
 		item.qty=0;
-		let cartItems=connecter.getCartItems();
+		let cartItems=controller.getCartItems();
 		let index=cartItems.indexOf(item);
 		cartItems.splice(index,1);
 		cartElement.parentNode.removeChild(cartElement);
@@ -173,14 +173,14 @@ const connecter={
 	},
 	placeOrder: function(){
 		
-		let orderDetails=connecter.buildOrderDetails();
+		let orderDetails=controller.buildOrderDetails();
 		if(Object.keys(orderDetails).length==0){return;}	
 		if(confirm("Do you want to place order?"))
 		{
-			let orderObject=connecter.buildOrderObject(orderDetails);
-			connecter.addOrderToLocal(orderObject);
+			let orderObject=controller.buildOrderObject(orderDetails);
+			controller.addOrderToLocal(orderObject);
 			pendingOrdersView.render(orderObject);
-			connecter.emptyCart();
+			controller.emptyCart();
 		}
 		else{
 			return;
@@ -188,7 +188,7 @@ const connecter={
 	},
 	//order deatils contains Item name:Qty
 	buildOrderDetails: function(){
-		const cartItems=connecter.getCartItems();
+		const cartItems=controller.getCartItems();
 		let orderDetails={};
 		if(cartItems.length===0)
 			return "";
@@ -209,7 +209,7 @@ const connecter={
 		let orderObject={};
 		let userName=
 		orderObject.userDetails=model.userName+"<br> Table No:"+ model.tableNo;
-		orderObject.time=connecter.getCurrTime();
+		orderObject.time=controller.getCurrTime();
 		orderObject.orderDetails=orderDetails;
 		orderObject.status="Pending";
 		let orderId=parseInt(localStorage.getItem("orderId"));
@@ -235,7 +235,7 @@ const connecter={
 	},
 
 	cancelOrder:function(orderElement,order){
-		connecter.removeOrderFromPendingList(orderElement,order);		
+		controller.removeOrderFromPendingList(orderElement,order);		
 		pendingOrdersView.renderPrev();
 		localStorage.removeItem(order.orderId);
 	},
@@ -257,13 +257,13 @@ const connecter={
 		localStorage.removeItem(order.orderId);
 	},
 	deleteOrder:function(orderElement,order){
-		connecter.deleteOrderFromLocal(order);
+		controller.deleteOrderFromLocal(order);
 		orderElement.parentNode.removeChild(orderElement);
 	},
 	/*
 	checkIfDelivered:function(order,orderElement){
 		if(order.status==="Delivered"){
-			setTimeout(function(){connecter.removeOrderFromPending(orderElement)},9000);
+			setTimeout(function(){controller.removeOrderFromPending(orderElement)},9000);
 			setTimeout(function(){orderHistoryView.render(order)},10005);
 			order.status="Completed";
 			addOrderToLocal(order);
@@ -274,8 +274,8 @@ const connecter={
 	//need to be updated
 	reorder(order){
 		let newOrderDetails=order.orderDetails.copy();
-		let orderObject=connecter.buildOrderObject(orderDetails);
-		connecter.addOrderToLocal(order);
+		let orderObject=controller.buildOrderObject(orderDetails);
+		controller.addOrderToLocal(order);
 		pendingOrdersView.render(order);
 	}
 	*/
@@ -289,7 +289,7 @@ const itemView = {
 	      this.render();	
     },
     render: function() {
-		let allItems = connecter.getVisibleItems();
+		let allItems = controller.getVisibleItems();
         this.itemList.innerHTML = '';
 		allItems.forEach((currItem)=>{	
 			let newItem = document.createElement('li');
@@ -303,7 +303,7 @@ const itemView = {
 					  				</div>
 					  		   `
 			addToCartButton = newItem.getElementsByClassName('add-To-Cart-button')[0];
-		   	addToCartButton.addEventListener('click', connecter.addToCart.bind(null,currItem),false);
+		   	addToCartButton.addEventListener('click', controller.addToCart.bind(null,currItem),false);
      		this.itemList.appendChild(newItem);	
 		});
     }
@@ -316,8 +316,8 @@ const categoryView={
 	render: function(item){
 		let categoryBox=document.getElementsByClassName("categories")[0];
 		categoryBox.innerHTML='';
-		let categories=connecter.getCategories();
-		let currCategory=connecter.getCurrCategory();
+		let categories=controller.getCategories();
+		let currCategory=controller.getCurrCategory();
 		categories.forEach((category,categoryIndex)=>{
 			let newCategory = document.createElement('div');
 			newCategory.setAttribute("class","category-item");
@@ -326,7 +326,7 @@ const categoryView={
 				 newCategory.classList.add("highlight");
 			}
 			newCategory.innerHTML=`	<a href="#" style="text-decoration: none;" >${category}</a>`
-			newCategory.addEventListener('click',connecter.changeCategory.bind(null,category),false);
+			newCategory.addEventListener('click',controller.changeCategory.bind(null,category),false);
 			categoryBox.appendChild(newCategory);
 		});
 	}
@@ -337,7 +337,7 @@ const cartView = {
 	init: function(){
 		this.cartLocation = document.getElementById("cart-list");
 		this.cartLocation.innerHTML='';
-		document.getElementsByClassName("place-order-button")[0].addEventListener("click",connecter.placeOrder);
+		document.getElementsByClassName("place-order-button")[0].addEventListener("click",controller.placeOrder);
 	 },	
 
 	displayQtyChange:function(item,cartElement){
@@ -373,9 +373,9 @@ const cartView = {
      	   	minusButton = newCartElement.getElementsByClassName('minus')[0];
      		removeButton = newCartElement.getElementsByClassName('cart-remove')[0];
      	   	
-     	   	plusButton.addEventListener('click', connecter.changeQty.bind(null,item,newCartElement,1), false);
-     		minusButton.addEventListener('click', connecter.changeQty.bind(null,item,newCartElement,-1), false);
-     	    removeButton.addEventListener('click', connecter.removeFromCart.bind(null,item,newCartElement), false);
+     	   	plusButton.addEventListener('click', controller.changeQty.bind(null,item,newCartElement,1), false);
+     		minusButton.addEventListener('click', controller.changeQty.bind(null,item,newCartElement,-1), false);
+     	    removeButton.addEventListener('click', controller.removeFromCart.bind(null,item,newCartElement), false);
      	},
 };
  
@@ -399,12 +399,12 @@ const pendingOrdersView={
 		order=JSON.parse(localStorage.getItem(order.orderId));
 		let status=order.status;
 		statusElement.innerHTML=`Status : ${status}`;
-		connecter.checkIfDelivered(order,this);
+		controller.checkIfDelivered(order,this);
 	},
 	*/
 	render:function(order){
 		
-		let orderDetails=connecter.parseOrderDetails(order.orderDetails);
+		let orderDetails=controller.parseOrderDetails(order.orderDetails);
 		if(orderDetails.length==0){return;}
 		let newOrderElement = document.createElement('li');
 		newOrderElement.setAttribute('class',"pen-list-item");
@@ -434,7 +434,7 @@ const pendingOrdersView={
 		
 		//	setInterval(pendingOrdersView.displayStatusChange.bind(newOrderElement,order),10000);
 	   	let cancelbutton=newOrderElement.getElementsByClassName("pen-cancel-button")[0];
-		cancelbutton.addEventListener("click",connecter.cancelOrder.bind(null,newOrderElement,order),false);
+		cancelbutton.addEventListener("click",controller.cancelOrder.bind(null,newOrderElement,order),false);
 	}
 };
 
@@ -455,7 +455,7 @@ const orderHistoryView={
 	render:function(order){
 		let orderElement = document.createElement('li');
 		orderElement.setAttribute('class',"pen-list-item");
-		let orderDetails=connecter.parseOrderDetails(order.orderDetails);
+		let orderDetails=controller.parseOrderDetails(order.orderDetails);
 		orderElement.innerHTML = `
 						<div class="pen-person-img">
 						 	<img src="images/person.png" style="width: 100px;">
@@ -482,11 +482,12 @@ const orderHistoryView={
 		//					</div>
 								   
 		let deleteOrderButton=orderElement.getElementsByClassName("delete-order-button")[0];
-		deleteOrderButton.addEventListener("click",connecter.deleteOrder.bind(null,orderElement,order),false);
+		deleteOrderButton.addEventListener("click",controller.deleteOrder.bind(null,orderElement,order),false);
 		this.orderHistoryList.appendChild(orderElement);
 	}
 };
-connecter.init();
+
+controller.init();
 
 
 }());

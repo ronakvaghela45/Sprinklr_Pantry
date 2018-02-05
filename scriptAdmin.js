@@ -67,7 +67,6 @@ const controller={
 	
 }
 
-
 const orderView={
 
 		init:function(){
@@ -126,6 +125,7 @@ const orderView={
 			this.adminOrderList[0].appendChild(newOrderElement);
 		}
 }
+
 const totalOrderView={
 	init:function(){
 		this.totalOrderList=document.getElementById("a-pen-Total-Order");
