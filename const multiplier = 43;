@@ -1,0 +1,36 @@
+ const multiplier = 43;
+ const mod1 =1000000007;
+ const mod2 =1000000009;
+
+ function getHashString(val){
+     let all="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+     let length=all.length;
+     let ans="";
+     while(val>0) {
+         const indexValue = (val % length);
+         ans = all.charAt(indexValue)+ans;
+         val = val / length;
+     }
+     return ans;
+ }
+
+function getHash(s) {
+     let n = s.length;
+     let p1 = 1;
+     let p2=1;
+     let hash1=0;
+     let hash2=0;
+     for (let i = 0; i < n; i++) {
+                
+                hash1 = (hash1 + parseInt(s.charAt(i)) * p1) % mod1;
+                p1 = p1 * multiplier % mod1;
+                hash2 = (hash2 + parseInt(s.charAt(i)) * p1) % mod2;
+                p2=p2*multiplier % mod2;
+     }
+     let hashFinal=(hash1<<31+hash2)%mod1;
+     let f1=getHashString(hashFinal);
+     return f1;
+}
+console.log(getHash("cdscvervr"));
+console.log(getHash("dervr"));
+console.log(getHash("cdscvervr"));  

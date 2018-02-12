@@ -183,10 +183,8 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 }	
 
 .button-div {
-	padding-left: 53px;
-	padding-right: 10px;
-	padding-bottom: 10px;
-	
+	display: flex;
+    justify-content: center;
 }
 .button-xy{
 	padding-bottom: 5px;
@@ -347,7 +345,8 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 }
 .pen-person
 {
-	display: inline-block;
+	display: flex;
+	flex-direction: column;
 	white-space: normal;
 	height: 100%;
 	background-color: white;
@@ -476,7 +475,8 @@ h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin
 }
 .a-pen-person
 {
-	display: inline-block;
+	display: flex;
+	flex-direction: column;
 	width: 17%;
 	white-space: normal;
 	height: 100%;

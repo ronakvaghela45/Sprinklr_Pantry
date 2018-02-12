@@ -16,15 +16,15 @@ const controller={
 	updateTotalOrder:function(orderDetails){
 		let totalOrders=controller.getTotalOrders();
 		for(let itemName in orderDetails){
-			if (orderDetails.hasOwnProperty(itemName))
-			{
+			// if (orderDetails.hasOwnProperty(itemName))
+			// {
 				if(itemName in totalOrders){
 					totalOrders[itemName]=totalOrders[itemName]+orderDetails[itemName];
 				}
 				else{
 					totalOrders[itemName]=orderDetails[itemName];
 				}
-			}
+			
 		}
 	},
 	orderInText:function(orderDetails){
@@ -99,8 +99,9 @@ const orderView={
 				 		 ${order.orderId} 
 				 	</div>
 				 	<div class="a-pen-person">
-						  ${order.userDetails}<br>
-						  Time: ${order.time}			
+						  <span>${order.userDetails}</span>
+						  <span>Table No.:${order.tableNo}</span> 
+						  <span>Time: ${order.time}</span>			
 					</div>
 					<div class="a-pen-order">
 				 		<div class="a-pen-order-items">
