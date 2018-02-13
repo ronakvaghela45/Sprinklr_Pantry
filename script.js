@@ -119,7 +119,6 @@ const controller={
 		let ifAlreadyInCart;
 		ifAlreadyInCart=controller.ifAlreadyInCart(item);
 		let itemName=item.name;
-		//need to be updated using data-id
 		
 		if(ifAlreadyInCart){
 			// for(let index in controller.currCartList)
@@ -144,11 +143,11 @@ const controller={
 	},
 	ifAlreadyInCart: function(item){
 		const cartItems = controller.getCartItems();
-		let itemIndex=cartItems.indexOf(item);
+		const itemIndex=cartItems.indexOf(item);
 		return itemIndex !== -1;
 	},
 	changeCartItemQty: function(item,change){
-		let qty=parseInt(item.qty);
+		const qty=parseInt(item.qty);
 		if(change===-1 && qty===1)
 		{
 			controller.removeItemFromCart(item);
@@ -265,15 +264,15 @@ class ListItem extends React.Component {
 	super(props);
 	this.handleAddToCart=this.handleAddToCart.bind(this);
   	this.state={inCart:false};
-  }
+   }
  	
-  handleAddToCart(){
-	if(!this.state.inCart)	
-		controller.addToCart(this.props.itemDetails);
- 	else{
- 		controller.removeItemFromCart(this.props.itemDetails);
- 	}
- 	 	this.props.handleUpdateInCart(this.props.itemDetails);				
+    handleAddToCart(){
+		if(!this.state.inCart)	
+			controller.addToCart(this.props.itemDetails);
+	 	else{
+	 		controller.removeItemFromCart(this.props.itemDetails);
+	 	}
+	 	 	this.props.handleUpdateInCart(this.props.itemDetails);				
 	}
 	render(){
 	 const currItem=this.props.itemDetails;
@@ -468,6 +467,16 @@ class Header extends React.Component{
 	}
 }
 
+class PendingList extends React.Component{
+	constructor(props){
+		super(props);
+	}
+	render(){
+
+			
+	}
+}
+
 class App extends React.Component{
 	constructor(props){
 		super(props);
@@ -534,7 +543,6 @@ const itemView = {
 		// 	addToCartButton.addEventListener('click', controller.addToCart.bind(null,currItem),false);
      	//	this.itemList.appendChild(newItem);	
 		}
-
 };
 
 const categoryView={
